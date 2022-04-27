@@ -1,8 +1,10 @@
 # Sky130-RTL-Design-And-Synthesis-Using-Verilog
 
+This repository shows the contents  and labs covered in the [RTL Desing using Verilog with Sky130 Technology](https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/) workshop.
+
 ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/VSD_Workshop_Detail.png)
 
-This repository shows the contents  and labs covered in the [RTL Desing using Verilog with Sky130 Technology](https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/) workshop.
+
 
 # Table of Contents
 
@@ -23,56 +25,80 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
 * Register Tranfer level:
 
 # Day1 - Introduction to Verilog RTL Design and Synthesis
-1. ## Introduction to iverilog, Design and Test Bench
+The first day of the workshop covers the brief description of iverilog simulator, Test Bench setup, iverilog simulation flow  and lab using iverilog, gtkwave, yosys tools.
+## 1. Introduction to iverilog, Design and Test Bench
 	* Icarus Verilog (iverilog) : It is a verilog simulation and synthesis tool. It operates as a compiler, compiling source code written in Verilog (IEEE-1364) 	       into some target format.Icarus Verilog is an open source Verilog compiler that supports the IEEE-1364 Verilog HDL including IEEE1364-2005 plus.
 	
-	* Design : It is the actual verilog code or set of verilog codes which has intended functionality to meet with the required specifications.
+	* RTL Design : It is the actual verilog code or set of verilog codes which has intended functionality to meet with the required specifications.
 	
 	* Test Bench : It is the setup to apply stimulus(test_vectors) to the design to check its functionality. So to ensure that our design is obeying the 		  required specification, we apply stimulus to the design ,observe its output and match it with respect to the specification.
 	
 	
-2. ## Simulating the Designs with iverilog
+ ## 2. Simulating the Designs with iverilog
 	* Simulation : It is the process of using a simulation software (simulator) to verify the functional correctness of a digital design that is modeled using a  		HDL (hardware description language) like VHDL,Verilog. It is the process of checking whether the design is adhering to the given specs.
 	
 	* Simulator : It is the tool used for simulating the desing. The simulator used here is "iverilog". The RTL design is the implementation of the required 	   specification and the functionality of the specs needs to be verified by simualting the design using simulator.
 	
 	* How does a simulator work ?
-   	  Simulator works by continuously monitoring the changes in the inputs. Upon a change in any one of the inputs, the output is re-evaluated. If there is no 	     change in input ,the ouput will not be evaluated.
+   	  Simulator works by continuously monitoring the changes in the inputs. Upon a change in any one of the inputs, the output is re-evaluated. If there is no 	     change in input, the ouput will not be evaluated. Simulator dumps the change to the ouput to a file accoridng to the change in input.
     
- 3. ## Design and Test Bench setup
- 	* The design written in verilog code has some primary inputs and primary outputs. The desing may have one or more than one primary  inputs and oe or more 	    than one primary outputs.
- 	* We need to give stimulus to all the primary inputs and need to observe the primary outputs. Thus we need stimulus generator at the input and oberver at 	    the output with the help of test bench.
+ ## 3. Design and Test Bench setup
+ 	* The RTL design written in verilog code has some primary inputs and primary outputs. It may have one or more than one primary inputs and one or more 	    	      than one primary outputs.
+ 	* We need to give stimulus to all the primary inputs and need to observe the primary outputs. Thus we need stimulus generator at the input and stimulus 	observer at the output.
+ 	* For giving stimulus we write the test bench, for that the design(module) is instantiated in the test bench, then stimulus is applied.
+ 	* It is important to note that the test bench doesn't have any primary input and primary output.
  	
+ 	Below image shows the test bench set :
+	![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/Test_bench_setup.png)
  	
- 	
-4. ## iverilog Simulation Flow
-**Inputs to the simulator**\
-    The simulator accepts two main inputs.
-        1. The Design : This is usually the behavioral description of the specs in some HDL language.
-        2. The Testbench : The testbench is a setup to apply stimulus or test vectors to the design to check its functionality and correctness.
+##  4. iverilog Simulation Flow
+	* Inputs to the simulator :
+    	  The iverilog simulator accepts two main inputs.
+        	1. RTL Design    : This is the behavioral description of the specs in some HDL language(verilog here).
+        	2. Testbench : The testbench is the setup to apply stimulus or test vectors to the design to check its functionality and correctness.
+	
+	*Output of the simulator :
+	 The iverilog simulator outputs a value chage dump (.vcd) file as output.
+	 
+	 This vcd file can be viewed using the GTKWave viewer tool.
+	 
+	 Below image shows the complete iverilog simulation flow :
+	![](         )
         
-3.   **iverilog Simulation Flow**
+
 4.   ### Setting Up the Lab.
     - Login to your lab instance and in our home directory create a directory named VLSI.
-      ![](/src/img/mkdir.png)
       ``` 
-      cd ~
+      cd /home/deepak074.verma/
       mkdir VLSI
       ```
-    - Clone the github repos into the VLSI directory.
-      ![](/src/img/clone.png)
+      ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.1.png)
+      
+      - Clone the github repository into the VLSI directory.
       ``` 
-      git clone https://github.com/kunalg123/vsdflow.git
+      cd VLSI
       git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
       ```
-    - Go to the newly created vsdflow directory and execute the command ./opensource_eda_tool_install.sh . This will begin the installation of the various tools required for this workshop.(**Note. The tools would have been already installed on the lab machines and this step is not necessary**)
-      ![](/src/img/vsdinstall1.png)
+      ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.2.png)
+      
+    - Check the contents of sky130RTLDesignAndSynthesisWorkshop directory
       ``` 
-      cd /home/varun/VLSI/vsdflow
-      ./opensource_eda_tool_install.sh
+      cd sky130RTLDesignAndSynthesisWorkshop
+      ls -ltr
+      cd my_lib 
+      cd lib                       : Contains sky130 standard cell library
+      cd ..
+      cd verilog_model 		   : Contains verilog model of standard cells in lib directory
       ```
-    - Directory Structure of sky130RTLDesignAndSynthesisWorkshop directory
-      ![](/src/img/ds.png)
+      ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.3.png)
+      
+      - Check the contents of verilog_files directory which contains working files for this workshop
+     ```
+     cd sky130RTLDesignAndSynthesisWorkshop
+     ls -ltr
+     cd verilog_files
+     ```
+     ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.4.png)
 
     4. **iverilog Simulation Flow**
 
