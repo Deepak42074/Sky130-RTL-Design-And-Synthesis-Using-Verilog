@@ -66,7 +66,7 @@ The first day of the workshop covers the brief description of iverilog simulator
 	![](         )
         
 
-4.   ### Setting Up the Lab.
+5. ## Setting Up the Lab.
     - Login to your lab instance and in our home directory create a directory named VLSI.
       ``` 
       cd /home/deepak074.verma/
@@ -74,7 +74,7 @@ The first day of the workshop covers the brief description of iverilog simulator
       ```
       ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.1.png)
       
-      - Clone the github repository into the VLSI directory.
+     - Clone the github repository into the VLSI directory.
       ``` 
       cd VLSI
       git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
@@ -92,7 +92,7 @@ The first day of the workshop covers the brief description of iverilog simulator
       ```
       ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.3.png)
       
-      - Check the contents of verilog_files directory which contains working files for this workshop
+     - Check the contents of verilog_files directory which contains working files for this workshop
      ```
      cd sky130RTLDesignAndSynthesisWorkshop
      ls -ltr
