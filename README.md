@@ -1,6 +1,6 @@
 # Sky130-RTL-Design-And-Synthesis-Using-Verilog
 
-![](/src/img/Verilog-flyer.png)
+![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/VSD_Workshop_Detail.png)
 
 This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/) conducted by [VSD Corp. Pvt Ltd](https://www.vlsisystemdesign.com/) on RTL design using verilog with SKY130 technology.
 
