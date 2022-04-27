@@ -26,7 +26,7 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
 
 # Day1 - Introduction to Verilog RTL Design and Synthesis
 The first day of the workshop covers the brief description of iverilog simulator, Test Bench setup, iverilog simulation flow  and lab using iverilog, gtkwave, yosys tools.
-## 1. Introduction to iverilog, Design and Test Bench
+1. ## Introduction to iverilog, Design and Test Bench
 	* Icarus Verilog (iverilog) : It is a verilog simulation and synthesis tool. It operates as a compiler, compiling source code written in Verilog (IEEE-1364) 	       into some target format.Icarus Verilog is an open source Verilog compiler that supports the IEEE-1364 Verilog HDL including IEEE1364-2005 plus.
 	
 	* RTL Design : It is the actual verilog code or set of verilog codes which has intended functionality to meet with the required specifications.
@@ -34,7 +34,7 @@ The first day of the workshop covers the brief description of iverilog simulator
 	* Test Bench : It is the setup to apply stimulus(test_vectors) to the design to check its functionality. So to ensure that our design is obeying the 		  required specification, we apply stimulus to the design ,observe its output and match it with respect to the specification.
 	
 	
- ## 2. Simulating the Designs with iverilog
+ 2. ## Simulating the Designs with iverilog
 	* Simulation : It is the process of using a simulation software (simulator) to verify the functional correctness of a digital design that is modeled using a  		HDL (hardware description language) like VHDL,Verilog. It is the process of checking whether the design is adhering to the given specs.
 	
 	* Simulator : It is the tool used for simulating the desing. The simulator used here is "iverilog". The RTL design is the implementation of the required 	   specification and the functionality of the specs needs to be verified by simualting the design using simulator.
@@ -42,7 +42,7 @@ The first day of the workshop covers the brief description of iverilog simulator
 	* How does a simulator work ?
    	  Simulator works by continuously monitoring the changes in the inputs. Upon a change in any one of the inputs, the output is re-evaluated. If there is no 	     change in input, the ouput will not be evaluated. Simulator dumps the change to the ouput to a file accoridng to the change in input.
     
- ## 3. Design and Test Bench setup
+ 3. ## Design and Test Bench setup
  	* The RTL design written in verilog code has some primary inputs and primary outputs. It may have one or more than one primary inputs and one or more 	    	      than one primary outputs.
  	* We need to give stimulus to all the primary inputs and need to observe the primary outputs. Thus we need stimulus generator at the input and stimulus 	observer at the output.
  	* For giving stimulus we write the test bench, for that the design(module) is instantiated in the test bench, then stimulus is applied.
@@ -51,13 +51,13 @@ The first day of the workshop covers the brief description of iverilog simulator
  	Below image shows the test bench set :
 	![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/Test_bench_setup.png)
  	
-##  4. iverilog Simulation Flow
+4. ##  iverilog Simulation Flow
 	* Inputs to the simulator :
     	  The iverilog simulator accepts two main inputs.
         	1. RTL Design    : This is the behavioral description of the specs in some HDL language(verilog here).
-        	2. Testbench : The testbench is the setup to apply stimulus or test vectors to the design to check its functionality and correctness.
+        	2. Testbench     : The testbench is the setup to apply stimulus or test vectors to the design to check its functionality and correctness.
 	
-	*Output of the simulator :
+	* Output of the simulator :
 	 The iverilog simulator outputs a value chage dump (.vcd) file as output.
 	 
 	 This vcd file can be viewed using the GTKWave viewer tool.
