@@ -25,15 +25,19 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
 # Day1 - Introduction to Verilog RTL Design and Synthesis
 1. ## Introduction to iverilog, Design and Test Bench
 	* Icarus Verilog (iverilog) : It is a verilog simulation and synthesis tool. It operates as a compiler, compiling source code written in Verilog (IEEE-1364) 	       into some target format.Icarus Verilog is an open source Verilog compiler that supports the IEEE-1364 Verilog HDL including IEEE1364-2005 plus.
+	
 	* Design : It is the actual verilog code or set of verilog codes which has intended functionality to meet with the required specifications.
+	
 	* Test Bench : It is the setup to apply stimulus(test_vectors) to the design to check its functionality. So to ensure that our design is obeying the 		  required specification, we apply stimulus to the design ,observe its output and match it with respect to the specification.
 	
 	
 2. ## Simulating the Designs with iverilog
 	* Simulation : It is the process of using a simulation software (simulator) to verify the functional correctness of a digital design that is modeled using a  		HDL (hardware description language) like VHDL,Verilog. It is the process of checking whether the design is adhering to the given specs.
+	
 	* Simulator : It is the tool used for simulating the desing. The simulator used here is "iverilog". The RTL design is the implementation of the required 	   specification and the functionality of the specs needs to be verified by simualting the design using simulator.
-	**How does a simulator work**\
-   	 Simulator works by continuously monitoring the changes in the inputs. Upon a change in any one of the inputs, the output is re-evaluated. If there is no 	   change in input ,the ouput will not be evaluated.
+	
+	* How does a simulator work ?
+   	  Simulator works by continuously monitoring the changes in the inputs. Upon a change in any one of the inputs, the output is re-evaluated. If there is no 	     change in input ,the ouput will not be evaluated.
     
  3. ## Design and Test Bench setup
  	* The design written in verilog code has some primary inputs and primary outputs. The desing may have one or more than one primary  inputs and oe or more 	    than one primary outputs.
