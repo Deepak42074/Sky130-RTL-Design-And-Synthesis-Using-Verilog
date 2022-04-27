@@ -2,7 +2,7 @@
 
 ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/VSD_Workshop_Detail.png)
 
-This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/) conducted by [VSD Corp. Pvt Ltd](https://www.vlsisystemdesign.com/) on RTL design using verilog with SKY130 technology.
+This repository shows the contents  and labs covered in the [RTL Desing using Verilog with Sky130 Technology](https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/) workshop.
 
 # Table of Contents
 
@@ -15,56 +15,40 @@ This repo aims to document the 5 day [workshop](https://www.vlsisystemdesign.com
    1. [Setting Up the Lab](#setting-up-the-lab)
    2. [Simulating the Designs with iverilog](#simulating-the-designs-with-iverilog)
    3. [Synthesis with Yosys](#synthesis-with-yosys)
-3. [Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles](#day2---timing-libs-hierarchical-vs-flat-synthesis-and-efficient-flop-coding-styles)
-   1. [The standard cell library](#the-standard-cell-library)
-   2. [Hierarchical and Flat synthesis](#hierarchical-and-flat-synthesis)
-   3. [Glitches](#glitches)
-   4. [Flops with asynchronous reset/set](#flops-with-asyncrhonous-resetset)
-   5. [Flops with synchronous reset/set](#flops-with-synchronous-resetset)
-4. [Day3 - Combinational and Sequential optimizations](#day3---combinational-and-sequential-optimizations)
-   1. [Combinational Logic Optimizations](#combinational-logic-optimisations)
-   2. [Sequential Logic Optimizations](#sequential-logic-optimizations)
-   3. [Sequential optimizations for unused outputs](#sequential-optimizations-for-unused-outputs)
-   4. [Some other optimization techniques](#some-other-optimization-techniques)
-5. [Day4 - GLS, blocking vs non-blocking and Synthesis-Simulation mismatch](#day4---gls-blocking-vs-non-blocking-and-synthesis-simulation-mismatch)
-   1. [Gate Level Simulation(GLS)](#gate-level-simulationgls)
-   2. [Synthesis Simulations Mismatches](#synthesis-simulations-mismatches)
-6. [Day5 - If, case, for loop and for generate](#day5---if-case-for-loop-and-for-generate)
-   1. [IF statement](#if-statement)
-   2. [Case statement](#case-statement)
-   3. [For loop](#for-loop)
-   4. [For Generate](#for-generate)
-7. [FAQs](#faqs)
+
 8. [Acknowledgements](#acknowledgements)
 9. [References](#references)
 
 
-# Introduction
-
-## What is logic synthesis .!?
-Logic synthesis is the process of translating your RTL Design, which is the behavioral representation of some specifications, usually written in a HDL language like verilog, to an optimized gate level netlist based on a given set of design constraints and a standard cell library.
-![](/src/img/synth.png)
-
-## Synthesis Steps
-  1. **Translation**\
-     In this step, the input hdl files are processed and the constructs in them are interpreted as various logical structures. An example would be an if-else statement might infer a MUX and so on. Constraints and optimization are not taken into account in this stage.
-  2. **Optimization**\
-     In this step, various techniques are used to optimize and minimize the logic and remove redundant logic.
-  3. **Mapping**\
-     In this step, the design is mapped to the desired target technology, based on the standard cell library. This implementation also takes into account the design constraints given as inputs like power,area and timing and tries to satisfy them.
-
-## Inputs To The Synthesis Process
-  1. **RTL Description**\
-     These are your HDL source files which contains a behavioral description of the specifications of the design.
-  2. **The Standard Cell Library**\
-     The library file contains a collection of cells that are provided by the foundry. These includes basic logic gates like inverters, and gates, or gates etc as well as macrocells like multiplexers, flip flops etc. Each cell has an associated description which contains detailed  information regarding its functionality, timing , power and area in a format which is readable by the synthesis tool.
-  3. **Constraints**\
-     These contains guidelines to the synthesizer on how to optimize the design. Based on the constraints, the synthesizer can choose different flavors from the standard cell to implement the same logic while trying to satisfy the various design constraints. The constraints typically includes timing requirements, area restrictions and power limitations.
-## Output Of The Synthesis Process
-  1. The output of the synthesis process is a optimized gate-level netlist mapped to the given target technology cells. 
+* Register Tranfer level:
 
 # Day1 - Introduction to Verilog RTL Design and Synthesis
-1. ### Setting Up the Lab.
+1. ## Introduction to iverilog, Design and Test Bench
+	* Icarus Verilog (iverilog) : It is a verilog simulation and synthesis tool. It operates as a compiler, compiling source code written in Verilog (IEEE-1364) 	       into some target format.Icarus Verilog is an open source Verilog compiler that supports the IEEE-1364 Verilog HDL including IEEE1364-2005 plus.
+	* Design : It is the actual verilog code or set of verilog codes which has intended functionality to meet with the required specifications.
+	* Test Bench : It is the setup to apply stimulus(test_vectors) to the design to check its functionality. So to ensure that our design is obeying the 		  required specification, we apply stimulus to the design ,observe its output and match it with respect to the specification.
+	
+	
+2. ## Simulating the Designs with iverilog
+	* Simulation : It is the process of using a simulation software (simulator) to verify the functional correctness of a digital design that is modeled using a  		HDL (hardware description language) like VHDL,Verilog. It is the process of checking whether the design is adhering to the given specs.
+	* Simulator : It is the tool used for simulating the desing. The simulator used here is "iverilog". The RTL design is the implementation of the required 	   specification and the functionality of the specs needs to be verified by simualting the design using simulator.
+	**How does a simulator work**\
+   	 Simulator works by continuously monitoring the changes in the inputs. Upon a change in any one of the inputs, the output is re-evaluated. If there is no 	   change in input ,the ouput will not be evaluated.
+    
+ 3. ## Design and Test Bench setup
+ 	* The design written in verilog code has some primary inputs and primary outputs. The desing may have one or more than one primary  inputs and oe or more 	    than one primary outputs.
+ 	* We need to give stimulus to all the primary inputs and need to observe the primary outputs. Thus we need stimulus generator at the input and oberver at 	    the output with the help of test bench.
+ 	
+ 	
+ 	
+4. ## iverilog Simulation Flow
+**Inputs to the simulator**\
+    The simulator accepts two main inputs.
+        1. The Design : This is usually the behavioral description of the specs in some HDL language.
+        2. The Testbench : The testbench is a setup to apply stimulus or test vectors to the design to check its functionality and correctness.
+        
+3.   **iverilog Simulation Flow**
+4.   ### Setting Up the Lab.
     - Login to your lab instance and in our home directory create a directory named VLSI.
       ![](/src/img/mkdir.png)
       ``` 
@@ -85,15 +69,7 @@ Logic synthesis is the process of translating your RTL Design, which is the beha
       ```
     - Directory Structure of sky130RTLDesignAndSynthesisWorkshop directory
       ![](/src/img/ds.png)
-2. ### Simulating the Designs with iverilog
-    1. **what is simulation !?**\
-    Simulation is the process of checking whether the design is adhering to the given specs. The tool used for simulating the design is called a simulator.
-    2. **How does a simulator work**\
-    Simulator works by continuously monitoring the inputs for changes. Upon a change in any one of the inputs, the outputs are re evaluated. The changes to the inputs and corresponding changes to the output can be logged in a file for later analysis.
-    3. **Inputs to the simulator**\
-    The simulator accepts two main inputs.
-        1. The Design : This is usually the behavioral description of the specs in some HDL language.
-        2. The Testbench : The testbench is a setup to apply stimulus or test vectors to the design to check its functionality and correctness.
+
     4. **iverilog Simulation Flow**
 
      ![](/src/img/iverilogn.png)
