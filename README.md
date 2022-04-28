@@ -9,18 +9,18 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
 # Table of Contents
 
 1. [Introduction](#introduction)
-2. [Day1 - Introduction to Verilog RTL Design and Synthesis](#day1---introduction-to-verilog-rtl-design-and-synthesis)
-   1. [Setting Up the Lab](#setting-up-the-lab)
-   2. [Simulating the Designs with iverilog](#simulating-the-designs-with-iverilog)
+2. [Day1 - Introduction to Verilog RTL Design and Synthesis](#Day1---introduction-to-verilog-rtl-design-and-synthesis)
+   1. [Introduction to iverilog, Design and Test Bench](##Introduction to iverilog, Design and Test Bench)
+   2. [Design and Test Bench setup](##Design and Test Bench setup)
    3. [Synthesis with Yosys](#synthesis-with-yosys)
 
 8. [Acknowledgements](#acknowledgements)
 9. [References](#references)
 
 
-#Introduction:
+# Introduction -   
 	Tools used:   iVerilog(for Simulation), GTKWave(for waveform view), Yosys(for Synthesis)  
-	Technology used: Sky130 technology.  
+	Technology used: Sky130 technology.   
 	
 # Day1 - Introduction to Verilog RTL Design and Synthesis
 The first day of the workshop covers the brief description of iverilog simulator, Test Bench setup, iverilog simulation flow  and lab using iverilog, gtkwave, yosys tools.
@@ -125,38 +125,38 @@ The first day of the workshop covers the brief description of iverilog simulator
     
       
      **Yosys working flow**
-        1. start yosys.
+        1. start yosys. 
+           ![]()  
+           ```
+           yosys 
+           ```
+        2. load the sky130 standard library.  
            ![]()
            ```
-           yosys
+           read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
            ```
-        2. load the sky130 standard library.
-           ![]()
+        3. Read the design files  
+           ![]() 
            ```
-           read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+           read_verilog good_mux.v  
            ```
-        3. Read the design files
-           ![](g)
+        4. Synthesize the top level module  
+           ![]()  
            ```
-           read_verilog good_mux.v
-           ```
-        4. Synthesize the top level module
-           ![](/src/img/yosys4.png)
-           ```
-           synth -top good_mux
+           synth -top good_mux  
            ```
            ![]()
         
-        5. Map to the standard library
+        5. Map to the standard library  
            ![]()
            ```
            abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
            ```
            ![]()
-        6. Two view the result as a graphich use the show command.
+        6. Two view the result as a graphich use the show command.  
            ```
            show
-           ```
+           ``` 
            ![](g)
         7. To write the result netlist to a file use the write_veriog command. This will output the netlist to a file in the current directory.
            ```
