@@ -18,8 +18,10 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
 9. [References](#references)
 
 
-* Register Tranfer level:
-
+#Introduction:
+	Tools used:   iVerilog(for Simulation), GTKWave(for waveform view), Yosys(for Synthesis)  
+	Technology used: Sky130 technology.  
+	
 # Day1 - Introduction to Verilog RTL Design and Synthesis
 The first day of the workshop covers the brief description of iverilog simulator, Test Bench setup, iverilog simulation flow  and lab using iverilog, gtkwave, yosys tools.
 1. ## Introduction to iverilog, Design and Test Bench
@@ -48,15 +50,15 @@ The first day of the workshop covers the brief description of iverilog simulator
 	![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/Test_bench_setup.png)
  	
 4. ##  iverilog Simulation Flow
-	* Inputs to the simulator :
-    	  The iverilog simulator accepts two main inputs.
-	       	1. RTL Design    : This is the behavioral description of the specs in some HDL language(verilog here).
-        	2. Testbench     : The testbench is the setup to apply stimulus or test vectors to the design to check its functionality and correctness.
+	* Inputs to the simulator :  
+    	  The iverilog simulator accepts two main inputs.  
+	       	1. RTL Design    : This is the behavioral description of the specs in some HDL language(verilog here).  
+        	2. Testbench     : The testbench is the setup to apply stimulus or test vectors to the design to check its functionality and correctness.  
 	
-	* Output of the simulator :
-	 The iverilog simulator outputs a value chage dump (.vcd) file as output.
+	* Output of the simulator :  
+	 The iverilog simulator outputs a value chage dump (.vcd) file as output.  
 	 
-	 This vcd file can be viewed using the GTKWave viewer tool.
+	 This vcd file can be viewed using the GTKWave viewer tool.  
 	 
 	 Below image shows the complete iverilog simulation flow :
 	![](         )
