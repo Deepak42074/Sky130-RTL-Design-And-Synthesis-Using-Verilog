@@ -216,9 +216,9 @@ good_mux_netlist.v : File name to which we want to write the netlist.It can be a
 ![](/DAY_1/Yosys_setup_6.png)
 	
 ### 2.7.2 Verifying the Synthesis output netlist:
-	The netlist is written as a verilog code in terms of standard cell from sky130_fd_sc_hd__tt_025C_1v80.lib. As the netlist is the true representation of the 	    RTL design ,it needs to be simulated to verify ,if tool has synthesized our design correctly.
-	To simulate the generated netlist follow the same iverlog simulation flow done above. The only change in the input of iverilog is the netlist file is used 	   in place of RTL design.
-	The set of primary inputs & ouputs will remain same for RTL design and synthesized netlist.Thus same test bench can be used.
+The netlist is written as a verilog code in terms of standard cell from sky130_fd_sc_hd__tt_025C_1v80.lib. As the netlist is the true representation of the 	    RTL design ,it needs to be simulated to verify ,if tool has synthesized our design correctly.
+To simulate the generated netlist follow the same iverlog simulation flow done above. The only change in the input of iverilog is the netlist file is used 	   in place of RTL design.
+The set of primary inputs & ouputs will remain same for RTL design and synthesized netlist.Thus same test bench can be used.
 	
 # 3. Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
 ## 3.1 Introduction to Timing .libs
@@ -286,14 +286,14 @@ It is done for the following reasons:
 	![](DAY_4)
  
 **Gate level verilog model** : It is one of the input to iverilog. It is used to tell iverilog about the standard cell models used in generated netlist after synthesis. The gate level verilog model can be :
-	* Functional : It can validates the functionality of the design alone.
-	* Timing aware : It can validate functinality and can ensure timing both.
+* Functional : It can validates the functionality of the design alone.
+* Timing aware : It can validate functinality and can ensure timing both.
 	
 ## 5.3 Synthesis-Simulation Mismatch :
 As we know, the generated netlist is the true representation of the RTL design, still we need to validate the functionality of the netist. This is because of the synthesis-simulation mismatch. This can happen because of the following reasons:
-	* Missing sensitivity list
-	* Blocking vs Non-Blocking assignment
-	* Non-Standard verilog coding
+* Missing sensitivity list
+* Blocking vs Non-Blocking assignment
+* Non-Standard verilog coding
 
 ### 5.3.1 Missing Sensitivity list :
 	
