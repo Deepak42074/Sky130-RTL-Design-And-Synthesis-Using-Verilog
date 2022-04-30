@@ -42,14 +42,14 @@ The first day of the workshop covers the brief description of iverilog simulator
 * How does a simulator work ?
    Simulator works by continuously monitoring the changes in the inputs. Upon a change in any one of the inputs, the output is re-evaluated. If there is no 	     	change in input, the ouput will not be evaluated. Simulator dumps the change to the ouput to a file according to the change in input.
     
- ## 2.3 Design and Test Bench setup
+## 2.3 Design and Test Bench setup
  * The RTL design written in verilog code has some primary inputs and primary outputs. It may have one or more than one primary inputs and one or more 	    	      than one primary outputs.
  * We need to give stimulus to all the primary inputs and need to observe the primary outputs. Thus we need stimulus generator at the input and stimulus 	observer at the output.
  * For giving stimulus we write the test bench, for that the design(module) is instantiated in the test bench, then stimulus is applied.
  * It is important to note that the test bench doesn't have any primary input and primary output.
  <dl>
   <dd>Below image shows the test bench set : </dd>
-</dl>
+ </dl>
  
 	![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/Test_bench_setup.png)
  	
@@ -72,58 +72,65 @@ The first day of the workshop covers the brief description of iverilog simulator
 ## 2.5 Setting Up the Lab.
 * <dl>
   <dd>Login to your lab instance and in our home directory create a directory named VLSI.: </dd>
-</dl>
+  </dl>
 
 ``` 
-cd /home/deepak074.verma/
-mkdir VLSI
+$ cd /home/deepak074.verma/
+$ mkdir VLSI
 ```
 ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.1.png)
       
-*
- Clone the github repository into the VLSI directory.
-	      ``` 
-	      cd VLSI
-	      git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
-	      ```
-      ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.2.png)
+*<dl>
+<dd>Clone the github repository into the VLSI directory.</dd>
+</dl>
+``` 
+$ cd VLSI
+$ git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+```
+![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.2.png)
       
- * Check the contents of sky130RTLDesignAndSynthesisWorkshop directory
-	      ``` 
-	      cd sky130RTLDesignAndSynthesisWorkshop
-	      ls -ltr
-	      cd my_lib 
-	      cd lib                       : Contains sky130 standard cell library
-	      cd ..
-	      cd verilog_model 		   : Contains verilog model of standard cells in lib directory
-	      ```
-      ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.3.png)
+ * <dl>
+	<dd>Check the contents of sky130RTLDesignAndSynthesisWorkshop directory</dd>
+</dl>
+``` 
+$cd sky130RTLDesignAndSynthesisWorkshop
+$ ls -ltr
+$ cd my_lib 
+$ cd lib                       : Contains sky130 standard cell library
+$ cd ..
+$ cd verilog_model 		   : Contains verilog model of standard cells in lib directory
+```
+![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.3.png)
       
- * Check the contents of verilog_files directory which contains working files for this workshop
-	     ```
-	     cd sky130RTLDesignAndSynthesisWorkshop
-	     ls -ltr
-	     cd verilog_files
-	     ```
-     ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.4.png)
+ * <d>l
+   <dd> Check the contents of verilog_files directory which contains working files for this workshop>/dd>
+   </dl>
+```
+$ cd sky130RTLDesignAndSynthesisWorkshop
+$ ls -ltr
+$ cd verilog_files
+```
+![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.4.png)
 
-  ## 2.6 Iverilog Simulation of Multiplexer(MUX)
+## 2.6 Iverilog Simulation of Multiplexer(MUX)
   Iverilog simulation is done as per below steps:
 		*  Iverilog takes RTL design and test bench as input and generates a executable file " a.out".
 		*  On executing "a.out" ,it dumps the simulation in value change dump format(.vcd file).
 		*  Then GTKWave takes the .vcd file and display the simulation waveform.
   The above steps are shown below: 
       1. Run iverilog with the design verilog file and the testbench as inputs. This will create an executable named a.out.
-        	```
-		cd sky130RTLDesignAndSynthesisWorkshop
-		ls -ltr
-		cd verilog_files 
-		iverilog good_mux.v tb_good_mux.v
-		```
+      
+      ```
+      $ cd sky130RTLDesignAndSynthesisWorkshop
+      $	ls -ltr
+      $	cd verilog_files 
+      $	iverilog good_mux.v tb_good_mux.v
+      ```
       2. Execute the file a.out. This will generate the value change dump (.vcd) file.
-         	 ```
-		 ./a.out
-		 ```
+      
+       ```
+       $ ./a.out
+       ```
       3. Now run GTKwave with the vcd file as input to view the simulation waveform.
 		 ```
 		 gtkwave tb_good_mux.vcd
