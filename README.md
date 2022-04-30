@@ -226,18 +226,88 @@ good_mux_netlist.v : File name to which we want to write the netlist.It can be a
 	
 # 4. Day3 - Combinational and Sequential optimizations
 ## 4.1 Introduction to Optimizations:
-**Logic Optimization ** :
+**Logic Optimization** :
 It is the process of finding an equivalent representation of the specified logic circuit under one or more specified constraint. Optimization is the process of iterating through a design such that it meets timing, area and power specifications.The purpose of logic optimization is to enhance the simulation efficiency. A typical optimization process consists of the transformations,as each gate corresponds to one or more statements in the compiled code, logic optimization reduces the program size and execution time.
 
 ## 4.1 Combinational Logic Optimizations:
 The logics optimization squeezes the logic to get the most optimized design. The optimized design is then efficient in terms of area and power saving.
 These are some common techniques used for optimizing combinational logic :
-* Constant Propagation (Direct Optimization technique)
+* Constant Propagation 
+	* Direct Optimization technique
 * Boolean Logic Optimization.
-	* K-map
+	* Karnaugh map
 	* Quine Mckluskey
+### 4.2.1 Constant Propagation:
+Constant propagation is the process of substituting the values of known constants in expressions. Constant propagation eliminates cases in which values are copied from one location or variable to another, in order to simply assign their value to another variable. The constant inputs to the circuit is  propagated to the output which results in a minimized expression of the logic.
+Below image show propagation of constant input to the output:
+ ![](DAY_2/)
+
+### 4.2.2 Boolean Logic Optimization:
+In terms of Boolean algebra, the optimization of a complex boolean expression is a process of finding a simpler one, which would upon evaluation ultimately produce the same results as the original one. This technique uses boolean algebra rules to minimize the logic.
+Below image shows the optimization of given boolean logic:
+ ![](DAY_2/)
+	
+## 4.3 Sequential Logic Optimizations
+Below are the techniques used for optimizimg the sequential logic :
+* Basic Tecnique
+	* Sequential Constant Propagation
+* Advanced Technique
+	* State Optimization
+	* Retiming
+	* Sequential Logic cloning(Floorplan aware synthesis)
+### 4.3.1 Sequential Constant Propagation
+	
+### 4.3.2 Advanced Techniques
+1. State Optimization : Optimization of unused states
+	
+2. Sequential Logic cloning : It is done when we are using physical aware synthesis.
+
+3. Retiming : It is done to reduce combinational delay and to improve the performance of the circuit.
+	
+	
+	
 	
 # 5. Day4 - GLS, blocking vs non-blocking and Synthesis-Simulation mismatch
+	
+## 5.1 GLS concepts and flow using iverilog :
+**Gate Level Simulation(GLS)** : Gate level simulation is used to boost the confidence regarding implementation of a design and can help verify dynamic circuit behaviour, which cannot be verified accurately by static methods. It is a significant step in the verification process.
+Gate level simulation overcomes the limitations of static-timing analysis and is increasingly being used due to low power issues, complex timing checks, design for test (DFT) insertion at gate level and low power considerations.
+
+The term "gate level" refers to the netlist view of a circuit, usually produced by logic synthesis. So while RTL simulation is pre-synthesis, GLS is post-synthesis. The netlist view is a complete connection list consisting of gates and IP models with full functional and timing behavior.
+In this test bench is run with "Synthesized Netlist" as Desing under test(DUT). As, the netlist is logically same as the RTL code, same test bench can be used whic is used for RTL simulation.
+
+* Why gate level simulation is done?
+It is done for the following reasons:
+	* To verify the logical correctness of the design after synthesis.
+	* To ensure the timing of the design is met. For this GLS need to run with delay annoatation(Timing aware GLS).
+
+## 5.2 GLS setup using iverilog :
+	Below image show the inputs to the iverilog tool and output for Gate Level Simulation:
+	![](DAY_4)
+ 
+**Gate level verilog model** : It is one of the input to iverilog. It is used to tell iverilog about the standard cell models used in generated netlist after synthesis. The gate level verilog model can be :
+	* Functional : It can validates the functionality of the design alone.
+	* Timing aware : It can validate functinality and can ensure timing both.
+	
+## 5.3 Synthesis-Simulation Mismatch :
+As we know, the generated netlist is the true representation of the RTL design, still we need to validate the functionality of the netist. This is because of the synthesis-simulation mismatch. This can happen because of the following reasons:
+	* Missing sensitivity list
+	* Blocking vs Non-Blocking assignment
+	* Non-Standard verilog coding
+
+### 5.3.1 Missing Sensitivity list :
+	
+### 5.3.2 Blocking and Non-blocking assignments in verilog :
+	
+**Caveats with Blocking Statements** :
+	
+	
+	
+
+	
+	
+
+	
 
 	
 
