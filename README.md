@@ -148,6 +148,11 @@ $ gtkwave tb_good_mux.vcd
 Synthesis : Synthesis is the process during which RTL design actually gets converted into a circuit. There are special programing languages called Hardware 		      Description Languages (HDLs) which are used to describe the hardware of a circuit and then the computer makes the circuit based on the program 	
  	      written. After synthesis we obtain something known as a “Gate Level Netlist”. This netlist is how our circuit will look.
 	      The tool used here to do synthesis is Yosys.
+In simple terms:
+* It does RTL to gate level translation
+* The design is converted into gates and connections are made between them.
+* This gives out a file called netlist.
+	      
 ### 2.7.1 Yosys Synthesis Flow setup
 The synthesis tool takes the RTL design and the liberty file(.lib) as inputs and synthesize the RTL design into netlist which is the gate level representation of the RTL design.
 
@@ -220,8 +225,29 @@ The netlist is written as a verilog code in terms of standard cell from sky130_f
 To simulate the generated netlist follow the same iverlog simulation flow done above. The only change in the input of iverilog is the netlist file is used 	   in place of RTL design.
 The set of primary inputs & ouputs will remain same for RTL design and synthesized netlist.Thus same test bench can be used.
 	
+	
 # 3. Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
-## 3.1 Introduction to Timing .libs
+## 3.1 Introduction to Timing .libs :
+### 3.1.1 Library naming convention :
+The SkyWater pdk provides multiple standard cell libraries. In this workshop we are using the "sky130_fd_sc_hd__tt_025C_1v80.lib" library.The sky130_fd_sc_hd library is designed for high density. This library enables higher routed gated density, lower dynamic power consumption, and comparable timing and leakage power. As a trade-off it has lower drive strength. Lets break down the terms in the library name.
+	
+* Sky130 : It is the name of the process technology.
+* fd     : It is abbreviation for who created and is responsible for the library, here the SkyWater Foundry.
+* sc 	 : It is abbreviation for the type of content found in the library, here the Digital Standard Cells.
+* hd	 : It represents high density
+* tt	 : It shows the typical process corner.
+* 025c   : It shows the temperature(25C)
+* 1v80	 : It shows the operating process voltage.
+
+### 3.1.2 Liberty file(.lib) :
+Liberty files are a IEEE Standard for defining PVT Characterization, Relating Input and Output Characteristics, Timing, Power, Noise.
+It is a collection of logic module/Standard cells. It includes different types of gates and different flavours of these gates.
+	
+Below image show some parts of our sky130_fd_sc_hd__tt_025C_1v80.lib :
+![](/DAY_2/)	
+
+	
+
 	
 	
 # 4. Day3 - Combinational and Sequential optimizations
