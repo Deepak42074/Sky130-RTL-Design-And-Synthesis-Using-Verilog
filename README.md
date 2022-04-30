@@ -47,8 +47,10 @@ The first day of the workshop covers the brief description of iverilog simulator
  * We need to give stimulus to all the primary inputs and need to observe the primary outputs. Thus we need stimulus generator at the input and stimulus 	observer at the output.
  * For giving stimulus we write the test bench, for that the design(module) is instantiated in the test bench, then stimulus is applied.
  * It is important to note that the test bench doesn't have any primary input and primary output.
- 	
- Below image shows the test bench set :
+ <dl>
+  <dd>Below image shows the test bench set : </dd>
+</dl>
+ 
 	![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/Test_bench_setup.png)
  	
 ## 2.4 iverilog Simulation Flow
@@ -60,27 +62,34 @@ The first day of the workshop covers the brief description of iverilog simulator
 	
 * Output of the simulator :  
  The iverilog simulator outputs a value chage dump (.vcd) file as output.This vcd file can be viewed using the GTKWave viewer tool.  
-	 
- Below image shows the complete iverilog simulation flow :
+<dl>
+  <dd>Below image shows the complete iverilog simulation flow : </dd>
+</dl>	 
+ 
 	![](DAY_1/iverilog_sim_flow.png )
         
 
 ## 2.5 Setting Up the Lab.
-   * Login to your lab instance and in our home directory create a directory named VLSI.
-	      ``` 
-	      cd /home/deepak074.verma/
-	      mkdir VLSI
-	      ```
-     ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.1.png)
+*  
+<dl>
+  <dd>Login to your lab instance and in our home directory create a directory named VLSI.: </dd>
+</dl>
+
+``` 
+cd /home/deepak074.verma/
+mkdir VLSI
+```
+![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.1.png)
       
-   * Clone the github repository into the VLSI directory.
+*
+ Clone the github repository into the VLSI directory.
 	      ``` 
 	      cd VLSI
 	      git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 	      ```
       ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.2.png)
       
-   * Check the contents of sky130RTLDesignAndSynthesisWorkshop directory
+ * Check the contents of sky130RTLDesignAndSynthesisWorkshop directory
 	      ``` 
 	      cd sky130RTLDesignAndSynthesisWorkshop
 	      ls -ltr
@@ -91,7 +100,7 @@ The first day of the workshop covers the brief description of iverilog simulator
 	      ```
       ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.3.png)
       
-   * Check the contents of verilog_files directory which contains working files for this workshop
+ * Check the contents of verilog_files directory which contains working files for this workshop
 	     ```
 	     cd sky130RTLDesignAndSynthesisWorkshop
 	     ls -ltr
@@ -100,11 +109,11 @@ The first day of the workshop covers the brief description of iverilog simulator
      ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.4.png)
 
   ## 2.6 Iverilog Simulation of Multiplexer(MUX)
-   Iverilog simulation is done as per below steps:
+  Iverilog simulation is done as per below steps:
 		*  Iverilog takes RTL design and test bench as input and generates a executable file " a.out".
 		*  On executing "a.out" ,it dumps the simulation in value change dump format(.vcd file).
 		*  Then GTKWave takes the .vcd file and display the simulation waveform.
-   The above steps are shown below: 
+  The above steps are shown below: 
       1. Run iverilog with the design verilog file and the testbench as inputs. This will create an executable named a.out.
         	```
 		cd sky130RTLDesignAndSynthesisWorkshop
@@ -124,11 +133,12 @@ The first day of the workshop covers the brief description of iverilog simulator
   		
      
 ## 2.7 Synthesis with Yosys
-   Synthesis : Synthesis is the process during which RTL design actually gets converted into a circuit. There are special programing languages called Hardware 		      Description Languages (HDLs) which are used to describe the hardware of a circuit and then the computer makes the circuit based on the program 	
+Synthesis : Synthesis is the process during which RTL design actually gets converted into a circuit. There are special programing languages called Hardware 		      Description Languages (HDLs) which are used to describe the hardware of a circuit and then the computer makes the circuit based on the program 	
  	      written. After synthesis we obtain something known as a “Gate Level Netlist”. This netlist is how our circuit will look.
 	      The tool used here to do synthesis is Yosys.
 ### 2.7.1 Yosys Synthesis Flow setup
-   The synthesis tool takes the RTL design and the liberty file(.lib) as inputs and synthesize the RTL design into netlist which is the gate level representation of the RTL design.
+The synthesis tool takes the RTL design and the liberty file(.lib) as inputs and synthesize the RTL design into netlist which is the gate level representation of the RTL design.
+
    Below image shows the Yosys synthesis flow setup: 
    ![](DAY_1/Yosys_setup.png)  
    
@@ -167,7 +177,7 @@ The first day of the workshop covers the brief description of iverilog simulator
            ```
 	abc : This pass uses the ABC tool for technology mapping of yosys's internal gate library to a target architecture. This command converts RTL code into 		gates,cells which is taken from the sky130_fd_sc_hd__tt_025C_1v80.lib file.
 	-liberty <file> : It generate netlists for the specified cell library (using the liberty file format).
-         ![](DAY_1/Yosys_setup_4.png)
+	![](DAY_1/Yosys_setup_4.png)
         6. To view the result as a grapviz use below command
            ```
            show
@@ -183,7 +193,7 @@ The first day of the workshop covers the brief description of iverilog simulator
 	-noattr :By using this option no attributes are included in the output
 	good_mux_netlist.v : File name to which we want to write the netlist.It can be any name.
           ![](/DAY_1/Yosys_setup_6.png)
-### 2.7.1 Verifying the Synthesis output netlist:
+### 2.7.2 Verifying the Synthesis output netlist:
 	The netlist is written as a verilog code in terms of standard cell from sky130_fd_sc_hd__tt_025C_1v80.lib. As the netlist is the true representation of the 	    RTL design ,it needs to be simulated to verify ,if tool has synthesized our design correctly.
 	To simulate the generated netlist follow the same iverlog simulation flow done above. The only change in the input of iverilog is the netlist file is used 	   in place of RTL design.
 	The set of primary inputs & ouputs will remain same for RTL design and synthesized netlist.Thus same test bench can be used.
