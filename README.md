@@ -66,12 +66,11 @@ The first day of the workshop covers the brief description of iverilog simulator
   <dd>Below image shows the complete iverilog simulation flow : </dd>
 </dl>	 
  
-	![](DAY_1/iverilog_sim_flow.png )
+![](DAY_1/iverilog_sim_flow.png )
         
 
 ## 2.5 Setting Up the Lab.
-*  
-<dl>
+* <dl>
   <dd>Login to your lab instance and in our home directory create a directory named VLSI.: </dd>
 </dl>
 
