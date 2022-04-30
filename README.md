@@ -8,18 +8,18 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
 
 # Table of Contents
 
-1. [Introduction](#introduction)
-2. [Day1 - Introduction to Verilog RTL Design and Synthesis](#Day1 -- Introduction to Verilog RTL Design and Synthesis)
-   1. [Introduction to iverilog, Design and Test Bench](#-Introduction to iverilog, Design and Test Bench)
-   2. [Simulating the Designs with iverilog](#-Simulating the Designs with iverilog)
-   3. [Design and Test Bench setup](#-Design and Test Bench setup)
-   4. [iverilog Simulation Flow](#-iverilog Simulation Flow)
-   5. [Setting Up the Lab](#-Setting Up the Lab)
-   6. [2.6 Iverilog Simulation of Multiplexer(MUX)](#-2.6 Iverilog Simulation of Multiplexer(MUX))
-   7. [Synthesis with Yosys](#-synthesis-with-yosys)
+- [Introduction](#Introduction)
+- [Day1 - Introduction to Verilog RTL Design and Synthesis](#Day1 - Introduction to Verilog RTL Design and Synthesis)
+   1. [Introduction to iverilog, Design and Test Bench](#Introduction to iverilog, Design and Test Bench)
+   2. [Simulating the Designs with iverilog](#Simulating the Designs with iverilog)
+   3. [Design and Test Bench setup](#Design and Test Bench setup)
+   4. [iverilog Simulation Flow](#iverilog Simulation Flow)
+   5. [Setting Up the Lab](#Setting Up the Lab)
+   6. [2.6 Iverilog Simulation of Multiplexer(MUX)](#Iverilog Simulation of Multiplexer(MUX))
+   7. [Synthesis with Yosys](#Synthesis-with-yosys)
 
-8. [Acknowledgements](#acknowledgements)
-9. [References](#references)
+- [Acknowledgements](#acknowledgements)
+- [References](#references)
 
 
 # 1. Introduction :
