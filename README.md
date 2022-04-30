@@ -113,12 +113,14 @@ $ cd verilog_files
 ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.4.png)
 
 ## 2.6 Iverilog Simulation of Multiplexer(MUX)
-  Iverilog simulation is done as per below steps:
-		*  Iverilog takes RTL design and test bench as input and generates a executable file " a.out".
-		*  On executing "a.out" ,it dumps the simulation in value change dump format(.vcd file).
-		*  Then GTKWave takes the .vcd file and display the simulation waveform.
-  The above steps are shown below: 
-      1. Run iverilog with the design verilog file and the testbench as inputs. This will create an executable named a.out.
+Iverilog simulation is done as per below steps:
+*  Iverilog takes RTL design and test bench as input and generates a executable file " a.out".
+*  On executing "a.out" ,it dumps the simulation in value change dump format(.vcd file).
+*  Then GTKWave takes the .vcd file and display the simulation waveform.
+The above steps are shown below:
+<dl>
+<dd> 1. Run iverilog with the design verilog file and the testbench as inputs. This will create an executable named a.out.</dd>
+</dl>
       
       ```
       $ cd sky130RTLDesignAndSynthesisWorkshop
@@ -126,16 +128,18 @@ $ cd verilog_files
       $	cd verilog_files 
       $	iverilog good_mux.v tb_good_mux.v
       ```
-      2. Execute the file a.out. This will generate the value change dump (.vcd) file.
+<dl>
+<dd> 2. Execute the file a.out. This will generate the value change dump (.vcd) file. </dd>
+</dl>
       
        ```
        $ ./a.out
        ```
-      3. Now run GTKwave with the vcd file as input to view the simulation waveform.
+   3. Now run GTKwave with the vcd file as input to view the simulation waveform.
 		 ```
 		 gtkwave tb_good_mux.vcd
 		 ```
-      4. To view the signal on the wave window click and drag them to the signal column.
+   4. To view the signal on the wave window click and drag them to the signal column.
   		
      
 ## 2.7 Synthesis with Yosys
