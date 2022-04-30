@@ -80,9 +80,9 @@ $ mkdir VLSI
 ```
 ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.1.png)
       
-*<dl>
-<dd>Clone the github repository into the VLSI directory.</dd>
-</dl>
+* <dl>
+  <dd>Clone the github repository into the VLSI directory.</dd>
+  </dl>
 ``` 
 $ cd VLSI
 $ git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
@@ -90,8 +90,8 @@ $ git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.2.png)
       
  * <dl>
-	<dd>Check the contents of sky130RTLDesignAndSynthesisWorkshop directory</dd>
-</dl>
+   <dd>Check the contents of sky130RTLDesignAndSynthesisWorkshop directory</dd>
+   </dl>
 ``` 
 $cd sky130RTLDesignAndSynthesisWorkshop
 $ ls -ltr
@@ -102,7 +102,7 @@ $ cd verilog_model 		   : Contains verilog model of standard cells in lib direct
 ```
 ![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/LAB_setup1.3.png)
       
- * <d>l
+ * <dl>
    <dd> Check the contents of verilog_files directory which contains working files for this workshop>/dd>
    </dl>
 ```
