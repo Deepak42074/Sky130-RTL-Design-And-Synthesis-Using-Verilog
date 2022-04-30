@@ -9,10 +9,14 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
 # Table of Contents
 
 1. [Introduction](#introduction)
-2. [Day1 - Introduction to Verilog RTL Design and Synthesis](#[Day1 - Introduction to Verilog RTL Design and Synthesis)
-   1. [Introduction to iverilog, Design and Test Bench](##Introduction to iverilog, Design and Test Bench)
-   2. [Design and Test Bench setup](##Design and Test Bench setup)
-   3. [Synthesis with Yosys](#synthesis-with-yosys)
+2. [Day1 - Introduction to Verilog RTL Design and Synthesis](#Day1 -- Introduction to Verilog RTL Design and Synthesis)
+   1. [Introduction to iverilog, Design and Test Bench](#-Introduction to iverilog, Design and Test Bench)
+   2. [Simulating the Designs with iverilog](#-Simulating the Designs with iverilog)
+   3. [Design and Test Bench setup](#-Design and Test Bench setup)
+   4. [iverilog Simulation Flow](#-iverilog Simulation Flow)
+   5. [Setting Up the Lab](#-Setting Up the Lab)
+   6. [2.6 Iverilog Simulation of Multiplexer(MUX)](#-2.6 Iverilog Simulation of Multiplexer(MUX))
+   7. [Synthesis with Yosys](#-synthesis-with-yosys)
 
 8. [Acknowledgements](#acknowledgements)
 9. [References](#references)
@@ -206,7 +210,7 @@ Show : It creates  graphviz DOT file for the selected part of the design and com
  $ write_verilog -noattr good_mux_netlist.v
  ```
 write_verilog : It write the current design to a Verilog file.
--noattr :By using this option no attributes are included in the output
+-noattr :By using this option no attributes are included in the output.
 good_mux_netlist.v : File name to which we want to write the netlist.It can be any name.
 	
 ![](/DAY_1/Yosys_setup_6.png)
@@ -216,7 +220,7 @@ good_mux_netlist.v : File name to which we want to write the netlist.It can be a
 	To simulate the generated netlist follow the same iverlog simulation flow done above. The only change in the input of iverilog is the netlist file is used 	   in place of RTL design.
 	The set of primary inputs & ouputs will remain same for RTL design and synthesized netlist.Thus same test bench can be used.
 	
-
+# 3. DAy
     
 # Acknowledgements
 
