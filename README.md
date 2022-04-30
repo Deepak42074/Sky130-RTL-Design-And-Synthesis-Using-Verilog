@@ -220,7 +220,30 @@ good_mux_netlist.v : File name to which we want to write the netlist.It can be a
 	To simulate the generated netlist follow the same iverlog simulation flow done above. The only change in the input of iverilog is the netlist file is used 	   in place of RTL design.
 	The set of primary inputs & ouputs will remain same for RTL design and synthesized netlist.Thus same test bench can be used.
 	
-# 3. DAy
+# 3. Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
+## 3.1 Introduction to Timing .libs
+	
+	
+# 4. Day3 - Combinational and Sequential optimizations
+## 4.1 Introduction to Optimizations:
+**Logic Optimization ** :
+It is the process of finding an equivalent representation of the specified logic circuit under one or more specified constraint. Optimization is the process of iterating through a design such that it meets timing, area and power specifications.The purpose of logic optimization is to enhance the simulation efficiency. A typical optimization process consists of the transformations,as each gate corresponds to one or more statements in the compiled code, logic optimization reduces the program size and execution time.
+
+## 4.1 Combinational Logic Optimizations:
+The logics optimization squeezes the logic to get the most optimized design. The optimized design is then efficient in terms of area and power saving.
+These are some common techniques used for optimizing combinational logic :
+* Constant Propagation (Direct Optimization technique)
+* Boolean Logic Optimization.
+	* K-map
+	* Quine Mckluskey
+	
+# 5. Day4 - GLS, blocking vs non-blocking and Synthesis-Simulation mismatch
+
+	
+
+
+	
+
     
 # Acknowledgements
 
