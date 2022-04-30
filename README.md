@@ -118,28 +118,26 @@ Iverilog simulation is done as per below steps:
 *  On executing "a.out" ,it dumps the simulation in value change dump format(.vcd file).
 *  Then GTKWave takes the .vcd file and display the simulation waveform.
 The above steps are shown below:
-<dl>
-<dd> 1. Run iverilog with the design verilog file and the testbench as inputs. This will create an executable named a.out.</dd>
-</dl>
-      
-      ```
-      $ cd sky130RTLDesignAndSynthesisWorkshop
-      $	ls -ltr
-      $	cd verilog_files 
-      $	iverilog good_mux.v tb_good_mux.v
-      ```
-<dl>
-<dd> 2. Execute the file a.out. This will generate the value change dump (.vcd) file. </dd>
-</dl>
-      
-       ```
-       $ ./a.out
-       ```
-   3. Now run GTKwave with the vcd file as input to view the simulation waveform.
-		 ```
-		 gtkwave tb_good_mux.vcd
-		 ```
-   4. To view the signal on the wave window click and drag them to the signal column.
+
+1. Run iverilog with the design verilog file and the testbench as inputs. This will create an executable named a.out.
+   
+```
+$ cd sky130RTLDesignAndSynthesisWorkshop
+$ ls -ltr
+$ cd verilog_files 
+$ iverilog good_mux.v tb_good_mux.v
+```
+
+2. Execute the file a.out. This will generate the value change dump (.vcd) file.
+
+```
+$ ./a.out
+```
+3. Now run GTKwave with the vcd file as input to view the simulation waveform.
+```
+$ gtkwave tb_good_mux.vcd
+```
+4. To view the signal on the wave window click and drag them to the signal column.
   		
      
 ## 2.7 Synthesis with Yosys
@@ -149,19 +147,20 @@ Synthesis : Synthesis is the process during which RTL design actually gets conve
 ### 2.7.1 Yosys Synthesis Flow setup
 The synthesis tool takes the RTL design and the liberty file(.lib) as inputs and synthesize the RTL design into netlist which is the gate level representation of the RTL design.
 
-   Below image shows the Yosys synthesis flow setup: 
-   ![](DAY_1/Yosys_setup.png)  
+Below image shows the Yosys synthesis flow setup: 
+![](DAY_1/Yosys_setup.png)  
    
-   Below are the steps to synthesize the multiplexer design(good_mux.v):
-   	1. To invoke Yosys:   
-           ```
-           cd verilog_files 
-	   yosys
-           ```
-	   Below image show the yosys synthesis suite:
-	   ![](DAY_1/yosys_invoke.png)
-       2. Reading sky130 standard library :
-           ```
+Below are the steps to synthesize the multiplexer design(good_mux.v):
+1. To invoke Yosys:   
+```
+$ cd verilog_files
+$ yosys
+```
+Below image show the yosys synthesis suite:
+![](DAY_1/yosys_invoke.png)
+
+2. Reading sky130 standard library :
+```
            read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
            ```
 	   read_liberty : It read cells from liberty file as modules into current design.
