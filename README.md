@@ -161,47 +161,56 @@ Below image show the yosys synthesis suite:
 
 2. Reading sky130 standard library :
 ```
-           read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
-           ```
-	   read_liberty : It read cells from liberty file as modules into current design.
-	   		  The option "-lib"  only create empty blackbox modules.
-        3. Reading the RTL design(verilog file) :
-           ```
-           read_verilog good_mux.v  
-           ```
-	   read_verilog : This command is used to read the verilog desgin file. It load modules from a Verilog file to the current design.
-	   Below image show the yosys synthesis suite:
-	   ![](DAY_1/Yosys_setup_2.png)
-        4. Synthesize the top level module  : Below command is used to synthesize the module
-           ```
-           synth -top good_mux  
-           ```
-	   synth : This command runs the default synthesis script. This command does not operate on partly selected designs.
-	   -top <module> : This option use the specified module as top module (default='top'). Here we have module name "good_mux" for our example.
-            ![](DAY_1/Yosys_setup_3.png)
-        
-        5. Mapping to the standard library 
-           ```
-           abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-           ```
-	abc : This pass uses the ABC tool for technology mapping of yosys's internal gate library to a target architecture. This command converts RTL code into 		gates,cells which is taken from the sky130_fd_sc_hd__tt_025C_1v80.lib file.
-	-liberty <file> : It generate netlists for the specified cell library (using the liberty file format).
-	![](DAY_1/Yosys_setup_4.png)
-        6. To view the result as a grapviz use below command
-           ```
-           show
-           ``` 
-	Show : It creates  graphviz DOT file for the selected part of the design and compile it to a graphics file (usually SVG or PostScript).It is used to show 
+$ read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+```
+read_liberty : It read cells from liberty file as modules into current design.
+	       The option "-lib"  only create empty blackbox modules.
+	       
+3. Reading the RTL design(verilog file) :
+```
+$ read_verilog good_mux.v  
+```
+read_verilog : This command is used to read the verilog desgin file. It load modules from a Verilog file to the current design.
+Below image show the yosys synthesis suite:
+![](DAY_1/Yosys_setup_2.png)
+
+4. Synthesize the top level module  : Below command is used to synthesize the module
+```
+$ synth -top good_mux  
+```
+synth : This command runs the default synthesis script. This command does not operate on partly selected designs.
+-top <module> : This option use the specified module as top module (default='top'). Here we have module name "good_mux" for our example.
+	
+![](DAY_1/Yosys_setup_2.png)
+	
+5. Mapping to the standard library 
+```
+$ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+abc : This pass uses the ABC tool for technology mapping of yosys's internal gate library to a target architecture. This command converts RTL code into 	    	gates,cells which is taken from the sky130_fd_sc_hd__tt_025C_1v80.lib file.
+-liberty <file> : It generate netlists for the specified cell library (using the liberty file format).
+	
+![](DAY_1/Yosys_setup_4.png)
+	
+6. To view the result as a grapviz use below command
+```
+$ show
+``` 
+Show : It creates  graphviz DOT file for the selected part of the design and compile it to a graphics file (usually SVG or PostScript).It is used to show 
 		the logic realized from the verilog code after synthesis.
-          ![](DAY_1/Yosys_setup_5.png)
-        7. To write the  netlist to a file use below command which  will output the netlist to a file in the current directory.
-           ```
-           write_verilog -noattr good_mux_netlist.v
-           ```
-	write_verilog : It write the current design to a Verilog file.
-	-noattr :By using this option no attributes are included in the output
-	good_mux_netlist.v : File name to which we want to write the netlist.It can be any name.
-          ![](/DAY_1/Yosys_setup_6.png)
+	
+ ![](DAY_1/Yosys_setup_5.png)
+	
+7. To write the  netlist to a file use below command which  will output the netlist to a file in the current directory.
+ ```
+ $ write_verilog -noattr good_mux_netlist.v
+ ```
+write_verilog : It write the current design to a Verilog file.
+-noattr :By using this option no attributes are included in the output
+good_mux_netlist.v : File name to which we want to write the netlist.It can be any name.
+	
+![](/DAY_1/Yosys_setup_6.png)
+	
 ### 2.7.2 Verifying the Synthesis output netlist:
 	The netlist is written as a verilog code in terms of standard cell from sky130_fd_sc_hd__tt_025C_1v80.lib. As the netlist is the true representation of the 	    RTL design ,it needs to be simulated to verify ,if tool has synthesized our design correctly.
 	To simulate the generated netlist follow the same iverlog simulation flow done above. The only change in the input of iverilog is the netlist file is used 	   in place of RTL design.
