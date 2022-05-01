@@ -292,7 +292,8 @@ $ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 $ write_verilog -noattr multiple_modules_hier.v			: to write hierarchical netlist
 $ Flatten							: to flatten the design
 $ write_verilog -noattr multiple_modules_Flat.v			: to write flattened netlist
-
+```
+	
 Below image shows the difference between the Hierarchical and flatten synthesized netlist:
 ![](/DAY_2/Hier_vs_Flat.png)
 
@@ -302,12 +303,23 @@ Below image show the generated netlist when desing is flattened:
 ## 3.2.3 Submodule Level Synthesis :
 When we have multiple sub modules in  top level module, sub module level syntheis can be done. The reason for sub module synthesis is done is mentioned below :
 * In case of top module having multiple instances of same submodule, synthesis of a submodule helps to synthesize single instance and using it for the other instances. It saves time as only sinle instanc ehave to be instantiated.
-* For large desings, divide and conquer approach is followed to synthesize submodules which helps in reducing load on synthesis tool.
+* For large designs, divide and conquer approach is followed to synthesize submodules which helps in reducing load on synthesis tool.
 
 For same example "multiple_modules.v " ,to understancd sub module synthesis better, synthesize only sub_module1 and observe how the synthesized netlist appears.
+```
+$ read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ read_verilog multiple_modules.v
+$ synth -top sub_module1
+$ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ write_verilog -noattr multiple_modules_sub.v			
+```
 After synthesis we have find out that synth command just looks at the specified sub_module1 alone and sub_module2 is ommitted from synthesis.
+
 Below images show the sub module synthesis of sub_module1:
-![](/DAY_2/Flatten_net.png)
+![](/DAY_2/sub_all.png)
+
+Below images show the sub module synthesize netlist:
+![](/DAY_2/sub_net.png)	
 
 
 
