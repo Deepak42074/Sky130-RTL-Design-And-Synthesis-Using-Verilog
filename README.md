@@ -321,6 +321,9 @@ Below images show the sub module synthesis of sub_module1:
 Below images show the sub module synthesize netlist:
 ![](/DAY_2/sub_net.png)	
 
+## 3.3 Flop coding styles and optimization
+
+
 
 
 
