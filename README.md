@@ -230,9 +230,9 @@ The set of primary inputs & ouputs will remain same for RTL design and synthesiz
 ## 3.1 Introduction to Timing .libs :
 ### 3.1.1 Library naming convention :
 There are seven standard cell libraries provided directly by the SkyWater Technology foundry available for use on SKY130 designs, which differ in intended applications and come in three separate cell heights. In this workshop we are using the "sky130_fd_sc_hd__tt_025C_1v80.lib" library.The sky130_fd_sc_hd library is designed for high density. This library enables higher routed gated density, lower dynamic power consumption, and comparable timing and leakage power. As a trade-off it has lower drive strength.Libraries in the SKY130 PDK are named using the following scheme:
-
+```
 <Process name> _ <Library Source Abbreviation> _ <Library Type Abbreviation> [_ <Library Name>]	
-
+```
 Lets break down the terms in our library name - sky130_fd_sc_hd__tt_025C_1v80.lib
 	
 * Sky130 : It is the name of the process technology.
@@ -258,11 +258,11 @@ Also lets see different flavours of same cell in the .lib file.
 ![](/DAY_2/and_versions.png)
 
 As per above image, we can find that different flavours of  "AND" gate has different size ,area, power consumption. Below details hsows the comparison between these different " AND " gates:
-	```
-	Area  : and2_0  < and2_2 < and2_4
-	Power : and2_0  < and2_2 < and2_4 
-	Delay : and2_0  > and2_2 > and2_4
-	```
+```
+Area  : and2_0  < and2_2 < and2_4
+Power : and2_0  < and2_2 < and2_4 
+Delay : and2_0  > and2_2 > and2_4
+```
 We can and2_4 has wider area and and2_0 has less area. Thus as per observations of different sizes of cells we can conclude:
 * Larger cells have wider transistors, thus more area, more power consumption but are faster cells(less delay).
 * Smaller cells have thin transistors, thus less area, power consumptions but are slower (more delay). 
