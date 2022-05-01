@@ -427,7 +427,38 @@ As we know, the generated netlist is the true representation of the RTL design, 
 
 	
 
-	
+# 5. Day5 - If, case, for loop and for generate
+## 5.1 If statements
+Synatx:
+```
+if <condition_1>		: it has first / highest priority among all statements
+	<statements>
+else if <condition_2>		: it has it has second highest priority 
+	<statements>
+else 
+	<statements>
+```
+If the condition evaluates to true (i.e. any non-zero value), all statements within that particular if block will be executed.
+		
+If statement is mainly used to create priority logic in terms of hardware. It can infer a MUX or priority logic based on how its coded.
+
+** Danger/Caution with 'If' constructs** :
+If "If statements" are not written correctly, it may infer latches. "Inferred latches" comes because of bad code style. The main reason for inferred latches is "incomplete if statements".
+Below code show the example of "incomplete if statements" :
+```
+module incomp_if (input i0 , input i1 , input i2 , output reg y);
+always @ (*)
+   begin
+       if(i0)
+           y <= i1;
+   end
+endmodule
+```
+In above code,we can see that the if statement is not complete as else part is missing. As per code when i0 is 1 y is i1,It does not tell what will be the output if i0 is low, its not defined in the code clearly. So the synthesis tool will assume that if i0 is 0 , then y should retain its previous value ,which represents latch is inferred. We did not intend a latch while writing code but a latch is inferred in the circuit. "If statements" creates combinational circuit, but due the bad coding style(incomplete if statements), have sequential element latch is inferred. In combinational circuit we can not have inferred latches.
+		  
+## 5.2 CASE statements
+
+
 
 
 	
