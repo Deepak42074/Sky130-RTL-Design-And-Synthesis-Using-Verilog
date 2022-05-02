@@ -17,6 +17,9 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
    5. [Setting Up the Lab](#Setting-Up-the-Lab)
    6. [Iverilog Simulation of Multiplexer(MUX)](#Iverilog-Simulation-of-Multiplexer(MUX))
    7. [Synthesis with Yosys](#Synthesis-with-yosys)
+ - [Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles](#Day2---Timing-libs-,-hierarchical-vs-flat-synthesis-and-efficient-flop-coding-styles)
+   1. [Introduction to Timing .libs](#Introduction-to-Timing-.libs)
+	- [Library naming convention](#Library-naming-convention)
 
 - [Acknowledgements](#acknowledgements)
 - [References](#references)
@@ -229,6 +232,7 @@ The set of primary inputs & ouputs will remain same for RTL design and synthesiz
 	
 	
 # 3. Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
+	
 ## 3.1 Introduction to Timing .libs :
 ### 3.1.1 Library naming convention :
 There are seven standard cell libraries provided directly by the SkyWater Technology foundry available for use on SKY130 designs, which differ in intended applications and come in three separate cell heights. In this workshop we are using the "sky130_fd_sc_hd__tt_025C_1v80.lib" library.The sky130_fd_sc_hd library is designed for high density. This library enables higher routed gated density, lower dynamic power consumption, and comparable timing and leakage power. As a trade-off it has lower drive strength.Libraries in the SKY130 PDK are named using the following scheme:
@@ -517,7 +521,7 @@ Blocking and Non-blocking statements come into picture when we are using "always
 
 **Blocking statements** : 
 * Inside always block , if we are using "equal to "(=) to make assignments, the assignment is called as blocking statement.
-* BLocking statements execute the statements in the sam eorder they are written.
+* Blocking statements execute the statements in the sam eorder they are written.
 * So the first statement is evaluated first ,then second and so on. Thus behaviour of such statements is sequential.
 
 
