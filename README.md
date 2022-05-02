@@ -51,7 +51,12 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
       * [Missing Sensitivity list](#Missing-Sensitivity-list)	
       * [Blocking and Non-blocking assignments in verilog](#Blocking-and-Non---blocking-assignments-in-verilog)
 - [Day5 - If, case, for loop and for generate](#Day5---If-,-case-,-for-loop-and-for-generate)
-- 
+   1. [If statements](#If-statements)
+   2. [CASE statements](#CASE-statements)
+      * [Caveats with CASE statements](#Caveats-with-CASE-statements)
+   3. [For loop and For generate constructs](#For-loop-and-For-generate-constructs)
+      * [For loop](#For-loop)
+      * [For generate](#For-generate)
 
 - [Acknowledgements](#acknowledgements)
 - [References](#references)
