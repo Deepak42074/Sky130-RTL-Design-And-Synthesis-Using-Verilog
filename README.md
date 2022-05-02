@@ -603,7 +603,20 @@ endmodule
 In above code,we can see that the if statement is not complete as else part is missing. As per code when i0 is 1 y is i1,It does not tell what will be the output if i0 is low, its not defined in the code clearly. So the synthesis tool will assume that if i0 is 0 , then y should retain its previous value ,which represents latch is inferred. We did not intend a latch while writing code but a latch is inferred in the circuit. "If statements" creates combinational circuit, but due the bad coding style(incomplete if statements), have sequential element latch is inferred. In combinational circuit we can not have inferred latches.
 		  
 ## 6.2 CASE statements
-The case statement checks if the given expression matches one of the expressions in the list and branches accordingly. It typically infers MUX. In comparison to ce statement.
+The case statement checks if the given expression matches one of the expressions in the list and branches accordingly. It typically infers MUX. In comparison to if statement, if there are many conditions to check ."if-else " construct may not be suitable and would synthesize the priority encoder instead of multiplexer. Thus, when large number conditions are required to check "case" is better option to choose.
+
+### 6.2.1 Caveats with CASE statements:
+* Incomplete case statement :
+lets understand this caveat with exmaple "incomp_case.v".
+![](DAY_5/)
+		  
+* Partial case assignment :		  
+lets understand this caveat with exmaple "partial_case_assign.v".
+![](DAY_5/)
+		  
+* Overlapping case assignment :
+lets understand this caveat with exmaple "bad_case.v".
+![](DAY_5/)
 
 
 
