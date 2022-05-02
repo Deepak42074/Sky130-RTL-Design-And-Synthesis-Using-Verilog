@@ -473,6 +473,18 @@ In above code we can see that if ```set = 1 ``` then ``` Q = 1 ``` and when ``` 
 To understand optimization with yosys, lets take an exmaple of opt_Check4.v :
 ![](DAY_3/Comb_yosys_opt.png)
 
+Synthesis & optimization commands :
+```
+$ read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ read_verilog opt_check4.v
+$ synth -top opt_check
+$ opt_clean -purge 				: command to to all optimizations
+$ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ show		
+```
+**opt_clean** : This pass identifies wires and cells that are unused and removes them. Other passes often remove cells but leave the wires in the design or reconnect the wires but leave the old cells in the design. This pass can be used to clean up after the passes that do the actual work.This pass only operates on completely selected modules without processes.
+
+**-purge** : also remove internal nets if they have a public name.
 
 ### 4.4.2 Sequential Logic Optimizations
 To understand optimization with yosys, lets take an exmaple of dff_const5.v :
