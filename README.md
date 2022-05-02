@@ -343,6 +343,19 @@ We can say more the amount of combinational circuit in the design ,the output wi
 
 1. Asynchronous reset D-Flip flop
 ![](/DAY_2/dff_asynch_res.png)
+
+While synthesizing RTL code for flops we need to use command "dfflibmap - liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib". This is beacuse in the library flow, there will be separate library for flops and standard cells. So we need to explicitly tell the tool where to pickup flops in the design from. In our case we have same library for both , so we have used same library path for invoking dfflibmap command.
+
+Synthesizing Asynchronous reset D-Flip flop (dff_asyncres.v)
+```
+$ read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ read_verilog dff_asyncre.v
+$ synth -top dff_asyncres
+$ dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ show		
+```
+	
 	
 2. Asynchronous set D-Flip flop
 ![](/DAY_2/dff_asynch_set.png)
@@ -354,25 +367,9 @@ We can say more the amount of combinational circuit in the design ,the output wi
 ![](/DAY_2/dff_asynch_sync_res.png)
 	
 **NOTE**: There can be the case when we have asynchronous and synchronous reset(as in last flop coding style shown above) together, it will not cause race condition. But if the desing have both reset and set ,it may cause race condition.
-
-
-
-
-
-
-
-
-
-
 	
 	
-	
-	
-	
-	
-	
-	
-	
+		
 # 4. Day3 - Combinational and Sequential optimizations
 ## 4.1 Introduction to Optimizations:
 **Logic Optimization** :
@@ -389,12 +386,12 @@ These are some common techniques used for optimizing combinational logic :
 ### 4.2.1 Constant Propagation:
 Constant propagation is the process of substituting the values of known constants in expressions. Constant propagation eliminates cases in which values are copied from one location or variable to another, in order to simply assign their value to another variable. The constant inputs to the circuit is  propagated to the output which results in a minimized expression of the logic.
 Below image show propagation of constant input to the output:
- ![](DAY_2/)
+ ![](DAY_3/Constant_propagation_opt.png)
 
 ### 4.2.2 Boolean Logic Optimization:
-In terms of Boolean algebra, the optimization of a complex boolean expression is a process of finding a simpler one, which would upon evaluation ultimately produce the same results as the original one. This technique uses boolean algebra rules to minimize the logic.
-Below image shows the optimization of given boolean logic:
- ![](DAY_2/)
+In terms of Boolean algebra, the optimization of a complex boolean expression is a process of finding a simpler one, which would upon evaluation ultimately produce the same results as the original one. This technique uses boolean algebra rules/theorems to minimize the logic.
+Below image shows the example of optimization of given boolean logic:
+ ![](DAY_3/Boolean_logic_optimization.png)
 	
 ## 4.3 Sequential Logic Optimizations
 Below are the techniques used for optimizimg the sequential logic :
