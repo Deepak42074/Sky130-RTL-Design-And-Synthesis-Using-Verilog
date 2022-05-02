@@ -44,7 +44,7 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
       * [Sequential Logic Optimizations](#Sequential-Logic-Optimizations)
    5. [Sequential optimizations for unused outputs](#Sequential-optimizations-for-unused-outputs)
    
-- [GLS, blocking vs non-blocking and Synthesis-Simulation mismatch](#GLS-,-blocking-vs-non---blocking-and-Synthesis---Simulation-mismatch)
+- [Day-4 GLS, blocking vs non-blocking and Synthesis-Simulation mismatch](#GLS-,-blocking-vs-non---blocking-and-Synthesis---Simulation-mismatch)
    1. [GLS concepts and flow using iverilog](#GLS-concepts-and-flow-using-iverilog)
    2. [GLS setup using iverilog ](#GLS-setup-using-iverilog)
    3. [Synthesis-Simulation Mismatch](#Synthesis---Simulation-Mismatch)
