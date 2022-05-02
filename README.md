@@ -448,8 +448,15 @@ Below are the techniques used for optimizimg the sequential logic :
 
 We can see that the output Y will always be at '1' irrespective of CLK, reset, A , Q because of sequential constant.
 
-2. There are cases where sequential constant propagation do not apply
-A constant connected to the input of a flop does not mean that we can always optimize it out. 
+2. There are cases where sequential constant propagation do not apply.lets see below code: 
+![](DAY_3/Sequential_Constant_NO_propagation_.png)
+
+In above code we can see that if ```set = 1 ``` then ``` Q = 1 ``` and when ``` set = 0 , clk = 1 ``` then ``` Q = 0 ```. Thus output is following input 'd' at clock edge. So the output Q can not be optimized, thus sequential constant can not propagate. 
+	
+**NOTE** :
+* A constant connected to the input of a flop does not mean that we can always optimize its output.
+* Every flop with D input tied to '0' is not a sequential constant.
+* For flop to become sequential constant , the Q output pin shoul always take a constant value.
 
 	
 ### 4.3.2 Advanced Techniques
