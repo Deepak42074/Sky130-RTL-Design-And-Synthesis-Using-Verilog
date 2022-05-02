@@ -437,7 +437,7 @@ Below are the techniques used for optimizimg the sequential logic :
 	* Retiming
 	* Sequential Logic cloning(Floorplan aware synthesis)
 ### 4.3.1 Sequential Constant Propagation
-1. lets take an exmaple to understand this optimization technique aa per below image:
+1. lets take an example to understand this optimization technique aa per below image:
 ![](DAY_3/Sequential_Constant_propagation_opt.png)
 
 We can see that the output Y will always be at '1' irrespective of CLK, reset, A , Q because of sequential constant.
@@ -584,7 +584,7 @@ else if <condition_2>		: it has it has second highest priority
 else 
 	<statements>
 ```
-If the condition evaluates to true (i.e. any non-zero value), all statements within that particular if block will be executed.
+If the condition evaluates to true (i.e. any non-zero value), all statements within that particular if block will be executed. All the 'if-else' statements are mutually exclusive.
 		
 If statement is mainly used to create priority logic in terms of hardware. It can infer a MUX or priority logic based on how its coded.
 
@@ -608,16 +608,33 @@ The case statement checks if the given expression matches one of the expressions
 ### 6.2.1 Caveats with CASE statements:
 * Incomplete case statement :
 lets understand this caveat with exmaple "incomp_case.v".
-![](DAY_5/)
+![](DAY_5/incomp_case.png)
+
+From the above image, we can see that all the possible cases for 2-bit 'sel' is not defined in RTL code, that shows incomplete case statement. Beacuse of this ,the output will infer latch in case when sel = 10, 11. So, we can also say when sel[1] is 1, there will be latching action which can be seen from RTL code simulation waveform. The output 'y' is not changing in accordance to input for sel= 10, 11. 
+From the synthesized netlist also, we can find out that the synthesizer has inferred latch for the RTL code.
+
+To avoid inferring ltches with case, use case statements with 'defalut' case in the code, which will cover all other cases not mentioned in case statement. However, using defalut case would not always avoid inferring latch in case of 'partial assignment cases'.
+		  
 		  
 * Partial case assignment :		  
 lets understand this caveat with exmaple "partial_case_assign.v".
-![](DAY_5/)
+![](DAY_5/Partial_case_1.png)
+![](DAY_5/Partial_case_2.png)
+
+From the RTL code , we can find out that the output 'x' is not assigned any value for sel = 01 and from the simulation we can figure out that the output waveform of 'x' is inferring latch for sel = 01. While output 'y' is inferring mux which is expected as per code. Thus a latching behaviour is inferred for output 'x' only.
+
+From the synthesized netlist also we can see that synthezier has inferred latch for output 'x' only. 
+To avoid inferrin latches in such cases, assign all the outputs in all the segments of case statements.
 		  
 * Overlapping case assignment :
 lets understand this caveat with exmaple "bad_case.v".
-![](DAY_5/)
+![](DAY_5/baad_case_1.png)
+![](DAY_5/baad_case_2.png)		  
 
+From the RTL code, we can see that last case statement has condition ```sel= 2'b1? ```. This case is overlapping case ``` sel = 2'b10 ```. Thus this cse confuses the simulator causing the synthesis-simulation mismatch. This create overlapping case and different simulator shows different behaviour for such case. The tool will give unpredictable ouput for overlapping case statements.
+
+From the synthesized netlist, we can find out that no latch is inferred for overlapping case and the GLS shows correct output behaviour as expected.
+Thus overlapping case statements create synthesis-simulation mismatch and to avoid this , all the statements of case statement shoul be mutually exclusive which is a correct way of coding.
 
 
 
