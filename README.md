@@ -324,6 +324,8 @@ Below images show the sub module synthesize netlist:
 ![](/DAY_2/sub_net.png)	
 
 ## 3.3 Flop coding styles and optimization
+Before going into coding style design of Flip flop we need to understand why flip flops are required.
+Lets consider a combinational circuit. Each gate in it has an associated delay. Any change in its input take some finite amount of time (called propagation delay)to propagate to its output. A combinational circuit with gates whose delays are unbalanced might result in unwanted transitions in the outputs for changes in the input. These are called <span style="color: red"> Glitch</span>.For example consider the logic a + a'. From boolean algebra we know that the output of this should always be 1. But, in reality this may not be the case. See the timing diagram below.
 
 
 
