@@ -427,6 +427,7 @@ These are some common techniques used for optimizing combinational logic :
 ### 4.2.1 Constant Propagation:
 Constant propagation is the process of substituting the values of known constants in expressions. Constant propagation eliminates cases in which values are copied from one location or variable to another, in order to simply assign their value to another variable. The constant inputs to the circuit is  propagated to the output which results in a minimized expression of the logic.
 Below image show propagation of constant input to the output:
+	
 ![](DAY_3/Constant_propagation_opt.png)
 
 ### 4.2.2 Boolean Logic Optimization:
