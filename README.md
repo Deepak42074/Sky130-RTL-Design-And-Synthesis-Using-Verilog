@@ -551,7 +551,7 @@ $ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 $ write_verilog -noattr ternary_operator_mux_net.v			
 ```
 	
-**Gate_level Simualtion**
+**Gate_level Simulation**
 ```
 $ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
 $ ./a.out
@@ -638,7 +638,7 @@ lets understand this caveat with exmaple "incomp_case.v".
 From the above image, we can see that all the possible cases for 2-bit 'sel' is not defined in RTL code, that shows incomplete case statement. Beacuse of this ,the output will infer latch in case when sel = 10, 11. So, we can also say when sel[1] is 1, there will be latching action which can be seen from RTL code simulation waveform. The output 'y' is not changing in accordance to input for sel= 10, 11. 
 From the synthesized netlist also, we can find out that the synthesizer has inferred latch for the RTL code.
 
-To avoid inferring latches with case, use case statements with 'defalut' case in the code, which will cover all other cases not mentioned in case statement. However, using defalut case would not always avoid inferring latch in case of 'partial assignment cases'.
+To avoid inferring latches with case, use case statements with 'default' case in the code, which will cover all other cases not mentioned in case statement. However, using defalut case would not always avoid inferring latch in case of 'partial assignment cases'.
 		  
 		  
 * Partial case assignment :		  
@@ -684,7 +684,7 @@ lets understand this with example "rca.v":
 ![](DAY_5/Generate_2.png)
 ![](DAY_5/Generate_3.png)		  
 
-The above images shows that the ouput waveform for RTL code functional simulation and synthesized netlist GLS show similar behaviour. Here the code has implemented 8-bit ripple carry adder using "for-generate" statement. Using "for-generate" helps us to replicate the hardware easily when we need same hardware to repeat large number of times, else we have to instantiate each hardware individually which will be cumbersome unlike number of times the hardware replication is samll.
+The above images shows that the ouput waveform for RTL code functional simulation and synthesized netlist GLS show similar behaviour. Here the code has implemented 8-bit ripple carry adder using "for-generate" statement. Using "for-generate" helps us to replicate the hardware easily when we need same hardware to repeat large number of times, else we have to instantiate each hardware individually which will be cumbersome unlike number of times the hardware replication is required is small.
 		  
 		  
 		  
