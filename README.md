@@ -375,7 +375,7 @@ $ show
 **Logic Optimization** :
 It is the process of finding an equivalent representation of the specified logic circuit under one or more specified constraint. Optimization is the process of iterating through a design such that it meets timing, area and power specifications.The purpose of logic optimization is to enhance the simulation efficiency. A typical optimization process consists of the transformations,as each gate corresponds to one or more statements in the compiled code, logic optimization reduces the program size and execution time.
 
-## 4.1 Combinational Logic Optimizations:
+## 4.2 Combinational Logic Optimizations:
 The logics optimization squeezes the logic to get the most optimized design. The optimized design is then efficient in terms of area and power saving.
 These are some common techniques used for optimizing combinational logic :
 * Constant Propagation 
@@ -386,12 +386,12 @@ These are some common techniques used for optimizing combinational logic :
 ### 4.2.1 Constant Propagation:
 Constant propagation is the process of substituting the values of known constants in expressions. Constant propagation eliminates cases in which values are copied from one location or variable to another, in order to simply assign their value to another variable. The constant inputs to the circuit is  propagated to the output which results in a minimized expression of the logic.
 Below image show propagation of constant input to the output:
- ![](DAY_3/Constant_propagation_opt.png)
+![](DAY_3/Constant_propagation_opt.png)
 
 ### 4.2.2 Boolean Logic Optimization:
 In terms of Boolean algebra, the optimization of a complex boolean expression is a process of finding a simpler one, which would upon evaluation ultimately produce the same results as the original one. This technique uses boolean algebra rules/theorems to minimize the logic.
 Below image shows the example of optimization of given boolean logic:
- ![](DAY_3/Boolean_logic_optimization.png)
+![](DAY_3/Boolean_logic_optimization.png)
 	
 ## 4.3 Sequential Logic Optimizations
 Below are the techniques used for optimizimg the sequential logic :
@@ -402,20 +402,51 @@ Below are the techniques used for optimizimg the sequential logic :
 	* Retiming
 	* Sequential Logic cloning(Floorplan aware synthesis)
 ### 4.3.1 Sequential Constant Propagation
+1. lets take an exmaple to understand this optimization technique aa per below image:
+![](DAY_3/Sequential_Constant_propagation_opt.png)
+
+We can see that the output Y will always be at '1' irrespective of CLK, reset, A , Q becaue of sequential constant.
+
+2. There are cases where sequential constant propagation do not apply
+A constant connected to the input of a flop does not mean that we can always optimize it out. 
+
 	
 ### 4.3.2 Advanced Techniques
-1. State Optimization : Optimization of unused states
+1. State Optimization : it is used  for Optimization of unused states.
 	
 2. Sequential Logic cloning : It is done when we are using physical aware synthesis.
 
 3. Retiming : It is done to reduce combinational delay and to improve the performance of the circuit.
 	
 	
+## 4.4 Logic optimizations with Yosys
 	
+### 4.4.1 Combinational Logic Optimizations:
+To understand optimization with yosys, lets take an exmaple of opt_Check4.v :
+![](DAY_3/Comb_yosys_opt.png)
+
+
+### 4.4.2 Sequential Logic Optimizations
+To understand optimization with yosys, lets take an exmaple of dff_const5.v :
+In the below circuit we can see that the circuit obatained after synthesis and optimization is similar to what we expected as per RTL code. Thus in this case no optimization is possible. 
+![](DAY_3/Sequential_yosys_opt.png)
+
+## 4.5 Sequential optimizations for unused outputs :
+Lets take an exmaple code counter_opt.v to understand this case:
+![](DAY_3/Sequential_unused_output_opt.png)
+
+At first going through code, we might be think that the design would contain 3 flops after synthesis as it seems to be a 3-bit counter. But, if we look closely, after a reset the value of count is 000 .The value of count is increasing on positive edge of clock bu the Output q is simply following count[0] as per code and its simulation result. 
+On synthesizing we get the optmized circuit , in which we can  that only on e flop is inferred for the code and the output of flop ,Q is count[0]. The input to the flop is compliment of output.
+	
+Thus we can say that, the logic which is no way related to primary output will be optimized by synthesis tool.
+
+
+
 	
 # 5. Day4 - GLS, blocking vs non-blocking and Synthesis-Simulation mismatch
 	
 ## 5.1 GLS concepts and flow using iverilog :
+	
 **Gate Level Simulation(GLS)** : Gate level simulation is used to boost the confidence regarding implementation of a design and can help verify dynamic circuit behaviour, which cannot be verified accurately by static methods. It is a significant step in the verification process.
 Gate level simulation overcomes the limitations of static-timing analysis and is increasingly being used due to low power issues, complex timing checks, design for test (DFT) insertion at gate level and low power considerations.
 
