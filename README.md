@@ -460,7 +460,7 @@ It is done for the following reasons:
 
 ## 5.2 GLS setup using iverilog :
 	Below image show the inputs to the iverilog tool and output for Gate Level Simulation:
-	![](DAY_4)
+	![](DAY_4/GLS_Setup.png)
  
 **Gate level verilog model** : It is one of the input to iverilog. It is used to tell iverilog about the standard cell models used in generated netlist after synthesis. The gate level verilog model can be :
 * Functional : It can validates the functionality of the design alone.
@@ -473,21 +473,71 @@ As we know, the generated netlist is the true representation of the RTL design, 
 * Non-Standard verilog coding
 
 ### 5.3.1 Missing Sensitivity list :
+let us understand this with example 'ternary_operator_mux.v' and do RTL simulation , synthesis and gate-level simulation.
+
+**RTL Simulation:**
+```
+$ iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
+$ ./a.out
+$ gtkwave tb_ternary_operator_mux.vcd	
+```
+	
+**Synthesis**
+```
+$ read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ read_verilog ternary_operator_mux.v
+$ synth -top ternary_operator_mux
+$ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ write_verilog -noattr ternary_operator_mux_net.v			
+```
+	
+**Gate_level Simualtion**
+```
+$ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
+$ ./a.out
+$ gtkwave tb_ternary_operator_mux_net.vcd	
+```
+![](DAY_4/good_mux.png)
+	
+In the above image we can see that the RTL simulation output waveform and synthesized netlist gate level simulation output waveform have similar behavior, so here there is no issus if missing sensitivity list.
+
+Now, take a look of below example of "bad_mux.v" :
+![](DAY_4/bad_mux.png)
+
+In this we can see that the  RTL simulation output waveform and synthesized netlist gate level simulation output waveform do not have similar waveform. This is the because of problem of "missing sensitivity list". 
+In the RTL simulation , we can see that always block is evaluated only when 'sel' is changing ans is independent of change in inputs(i0,i1). Thus as output is not evaluated for change in inputs, when we do RTL simulation ,simulator will infer the mux as latch. So this comes under problem of "missing sensitivity list".
+
+To solve this issue we can write always block as : always(*)
+So, always block will be evaluated when any if the inputs i0, i1, sel change.
+	
+But we can also see that when synthesis tool evaluate the same RTL code and the gate level simulation is done. The output waveform shows the MUX behaviour. Thus systhesis tool has inferred the same code as mux.This is a problem of synthesis- simulation mismatch and that is the main reason to perform GLS.
 	
 ### 5.3.2 Blocking and Non-blocking assignments in verilog :
+Blocking and Non-blocking statements come into picture when we are using "always" block. 
+
+**Blocking statements** : 
+* Inside always block , if we are using "equal to "(=) to make assignments, the assignment is called as blocking statement.
+* BLocking statements execute the statements in the sam eorder they are written.
+* So the first statement is evaluated first ,then second and so on. Thus behaviour of such statements is sequential.
+
+
+**Non-Blocking statements** : 
+* Inside always block, the non- blocking assignment is done using "less than equal to"(<=).
+* It executes all the RHS when entered in always block and assign it to LHS.
+* All the statements are evaluated in parallel, so their order does not matter.
+* Thus, the evaluation of staements is done parallely.									   
 	
 **Caveats with Blocking Statements** :
-	
-	
-	
+lets understand the cavest in blocking statements using an example :	
+![](DAY_4/cavet_blocking.png)	
+											 
+We can see the in the above case the RTL simulation, the latch behaviour is inferred by simulator. This is because the assignmenst are blocking assignment. Thus first value of 'd' is evaluated which will use old value of 'x' as the value of 'x' is evaluated after the first statement.
 
-	
-	
-
-	
+But on performing the synthesis and GLS, we can see the synthesized & generated netlist simulation is inferring gates inplace of latch, as no past value of 'x' is used for evaluation of 'd'. Thus generated netlist is correct as per code. Thus, this example shows the  synthesis- simulation mismatch due to caveats in blocking statements.										   
+											   
 
 # 5. Day5 - If, case, for loop and for generate
-'If' and 'case; staementa are used inside the 'always' block, so the variables to which we are going to assign output value in both statements should be a register variable.
+'If' and 'case'; staementa are used inside the 'always' block, so the variables to which we are going to assign output value in both statements should be a register variable.
 	
 ## 5.1 If statements
 Syntax:
