@@ -405,7 +405,7 @@ Below are the techniques used for optimizimg the sequential logic :
 1. lets take an exmaple to understand this optimization technique aa per below image:
 ![](DAY_3/Sequential_Constant_propagation_opt.png)
 
-We can see that the output Y will always be at '1' irrespective of CLK, reset, A , Q becaue of sequential constant.
+We can see that the output Y will always be at '1' irrespective of CLK, reset, A , Q because of sequential constant.
 
 2. There are cases where sequential constant propagation do not apply
 A constant connected to the input of a flop does not mean that we can always optimize it out. 
