@@ -95,7 +95,7 @@ The first day of the workshop covers the brief description of iverilog simulator
   <dd>Below image shows the test bench set : </dd>
  </dl>
  
-	![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/Test_bench_setup.png)
+![](https://github.com/Deepak42074/Sky130-RTL-Design-And-Synthesis-Using-Verilog/blob/main/DAY_1/Test_bench_setup.png)
  	
 ## 2.4 iverilog Simulation Flow
 * Inputs to the simulator :  
