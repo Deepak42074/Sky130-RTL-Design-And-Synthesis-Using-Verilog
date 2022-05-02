@@ -642,14 +642,19 @@ Thus overlapping case statements create synthesis-simulation mismatch and to avo
 * It is used for evaluating expressions.
 * For loop is not used for instantiating hardware, gates.
 
-lets understand this with example 
+lets understand this with example "mux_generate.v": 
+![](DAY_5/For_loop_1.png)
+![](DAY_5/For_loop_2.png)
 		  
 ### 6.3.2 For generate :
 * It is used outside the 'always' block.
 * It can not be used inside 'always' block.		  
 * It is used for instantiating hardware multiple times.
 
-		  
+lets understand this with example "rca.v": 		  
+![](DAY_5/Generate_1.png)
+![](DAY_5/Generate_2.png)
+![](DAY_5/Generate_3.png)		  
 		  
 # Acknowledgements
 
