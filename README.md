@@ -495,7 +495,7 @@ In the below circuit we can see that the circuit obatained after synthesis and o
 Lets take an exmaple code counter_opt.v to understand this case:
 ![](DAY_3/Sequential_unused_output_opt.png)
 
-At first going through code, we might be think that the design would contain 3 flops after synthesis as it seems to be a 3-bit counter. But, if we look closely, after a reset the value of count is 000 .The value of count is increasing on positive edge of clock bu the Output q is simply following count[0] as per code and its simulation result. 
+At first going through code, we might be think that the design would contain 3 flops after synthesis as it seems to be a 3-bit counter. But, if we look closely, after a reset ,value of count is 000 .The value of count is increasing on positive edge of clock but the Output q is simply following count[0] as per code and its simulation result. 
 On synthesizing we get the optmized circuit , in which we can  that only on e flop is inferred for the code and the output of flop ,Q is count[0]. The input to the flop is compliment of output.
 	
 Thus we can say that, the logic which is no way related to primary output will be optimized by synthesis tool.
