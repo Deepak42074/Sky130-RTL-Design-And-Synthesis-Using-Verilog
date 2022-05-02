@@ -141,7 +141,9 @@ $ ./a.out
 ```
 $ gtkwave tb_good_mux.vcd
 ```
-4. To view the signal on the wave window click and drag them to the signal column.
+4. To view the signal on the wave window click and drag them to the signal column..
+![](DAY_1/good_mux_waveform.png)
+
   		
      
 ## 2.7 Synthesis with Yosys
@@ -190,7 +192,7 @@ $ synth -top good_mux
 synth : This command runs the default synthesis script. This command does not operate on partly selected designs.
 -top <module> : This option use the specified module as top module (default='top'). Here we have module name "good_mux" for our example.
 	
-![](DAY_1/Yosys_setup_2.png)
+![](DAY_1/Yosys_setup_3.png)
 	
 5. Mapping to the standard library 
 ```
@@ -428,8 +430,10 @@ As we know, the generated netlist is the true representation of the RTL design, 
 	
 
 # 5. Day5 - If, case, for loop and for generate
+'If' and 'case; staementa are used inside the 'always' block, so the variables to which we are going to assign output value in both statements should be a register variable.
+	
 ## 5.1 If statements
-Synatx:
+Syntax:
 ```
 if <condition_1>		: it has first / highest priority among all statements
 	<statements>
@@ -457,6 +461,7 @@ endmodule
 In above code,we can see that the if statement is not complete as else part is missing. As per code when i0 is 1 y is i1,It does not tell what will be the output if i0 is low, its not defined in the code clearly. So the synthesis tool will assume that if i0 is 0 , then y should retain its previous value ,which represents latch is inferred. We did not intend a latch while writing code but a latch is inferred in the circuit. "If statements" creates combinational circuit, but due the bad coding style(incomplete if statements), have sequential element latch is inferred. In combinational circuit we can not have inferred latches.
 		  
 ## 5.2 CASE statements
+The case statement checks if the given expression matches one of the expressions in the list and branches accordingly. It typically infers MUX. In comparison to ce statement.
 
 
 
