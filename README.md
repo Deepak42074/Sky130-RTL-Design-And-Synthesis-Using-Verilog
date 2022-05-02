@@ -17,8 +17,8 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
    5. [Setting Up the Lab](#Setting-Up-the-Lab)
    6. [Iverilog Simulation of Multiplexer(MUX)](#Iverilog-Simulation-of-Multiplexer(MUX))
    7. [Synthesis with Yosys](#Synthesis-with-yosys)
-   	a.[Yosys Synthesis Flow setup](#Yosys-Synthesis-Flow-setup)
-   	b.[Verifying the Synthesis output netlist](#Verifying-the-Synthesis-output-netlist)
+   			a.[Yosys Synthesis Flow setup](#Yosys-Synthesis-Flow-setup)
+   			b.[Verifying the Synthesis output netlist](#Verifying-the-Synthesis-output-netlist)
 	
 - [Day2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles](#Day2---Timing-libs-,-hierarchical-vs-flat-synthesis-and-efficient-flop-coding-styles)
    1. [Introduction to Timing .libs](#Introduction-to-Timing-.libs)
