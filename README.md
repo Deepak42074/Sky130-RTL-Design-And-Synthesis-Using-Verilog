@@ -613,7 +613,7 @@ lets understand this caveat with exmaple "incomp_case.v".
 From the above image, we can see that all the possible cases for 2-bit 'sel' is not defined in RTL code, that shows incomplete case statement. Beacuse of this ,the output will infer latch in case when sel = 10, 11. So, we can also say when sel[1] is 1, there will be latching action which can be seen from RTL code simulation waveform. The output 'y' is not changing in accordance to input for sel= 10, 11. 
 From the synthesized netlist also, we can find out that the synthesizer has inferred latch for the RTL code.
 
-To avoid inferring ltches with case, use case statements with 'defalut' case in the code, which will cover all other cases not mentioned in case statement. However, using defalut case would not always avoid inferring latch in case of 'partial assignment cases'.
+To avoid inferring latches with case, use case statements with 'defalut' case in the code, which will cover all other cases not mentioned in case statement. However, using defalut case would not always avoid inferring latch in case of 'partial assignment cases'.
 		  
 		  
 * Partial case assignment :		  
@@ -636,17 +636,27 @@ From the RTL code, we can see that last case statement has condition ```sel= 2'b
 From the synthesized netlist, we can find out that no latch is inferred for overlapping case and the GLS shows correct output behaviour as expected.
 Thus overlapping case statements create synthesis-simulation mismatch and to avoid this , all the statements of case statement shoul be mutually exclusive which is a correct way of coding.
 
+## 6.3 For loop and For generate constructs :
+### 6.3.1 For loop :
+* It is used inside the 'always' block.
+* It is used for evaluating expressions.
+* For loop is not used for instantiating hardware, gates.
 
+lets understand this with example 
+		  
+### 6.3.2 For generate :
+* It is used outside the 'always' block.
+* It can not be used inside 'always' block.		  
+* It is used for instantiating hardware multiple times.
 
-	
-
-    
+		  
+		  
 # Acknowledgements
 
 * Kunal Gosh, Co-Founder (VSD Corp. Pvt Ltd)
 * Shon Taware, Teaching Assistant (VSD Corp. Pvt Ltd)
 
 # References 
-*http://bygone.clairexen.net/yosys/documentation.html
-*https://skywater-pdk.readthedocs.io/en/main/contents/libraries/foundry-provided.html#sky130-fd-sc-hd-high-density-standard-cell-library
+* http://bygone.clairexen.net/yosys/documentation.html
+* https://skywater-pdk.readthedocs.io/en/main/contents/libraries/foundry-provided.html#sky130-fd-sc-hd-high-density-standard-cell-library
 
