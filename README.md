@@ -326,13 +326,34 @@ Below images show the sub module synthesize netlist:
 ## 3.3 Flop coding styles and optimization
 Before going into coding style design of Flip flop we need to understand why flip flops are required.
 	
-Lets consider a combinational circuit. Each gate in it has an associated delay. Any change in its input take some finite amount of time (called propagation delay)to propagate to its output. A combinational circuit with gates whose delays are unbalanced might result in unwanted transitions in the outputs for changes in the input. These are called ```diff Glitch in red ```.
+Lets consider a combinational circuit. Each gate has a  delay associated to it. Any change in its input take some finite amount of time (called propagation delay) to propagate to its output. A combinational circuit with gates whose delays are different result in unwanted transitions in the outputs for changes in the input. These are called ``` Glitch  ```.
 
-Let take below combinational circuit. From boolean algebra we know that the output of this should always be 1. But, in reality this may not happen as can bee senn from the timing diagram on the left.
-![](/DAY_2/Glitch&wave.png)	
+Let take below combinational circuit. From boolean algebra we know that the output of this should always be 1. But, in reality this may not happen as can bee seen from the timing diagram on the right.
+![](/DAY_2/Glitch&wave.png)
+ 
+We can say more the amount of combinational circuit in the design ,the output will have more glitches.
+
+**Avoiding Glitches** : To avoid glitches, we want a element which can store the value of combinational circuit, i.e. Flipflops. We can use flops to restrict glitches by storing the value in flops. Flipflops are storage elements. Their outputs will change only on the edge of clock. Between edges, the output is completely isolated from the inputs.As the flop ouptuts only reflect the input on a clock edge ,if we add flops between our combinational paths, we can prevent glitches from chaining up and causing unstable outputs. Thus, combinational circuit will see stable inputs and outputs.Thus flops act as barriers at the input of the combinational circuit, giving its output time to settle after a change in the inputs.
+
+**NOTE** : While coding the flip flops, its important to specify the initial states of the flops. Since the output of the flops are input to a combinational circuit, if initila state is not specified/unknown, this may result in the combinational logic evaluating to some garbage value. For the designer,there should have some control pin to to control the initial values of the flop to avoid such cases. For this we have two pins in flops , RESET and SET. RESET would set the flop output to 0 and SET would set the flop output to 1. Both can be done asynchronously or synchronous with respect to the clock.
+
 	
 	
+### 3.3.1 Different Flop coding styles
 
+1. Asynchronous reset D-Flip flop
+![](/DAY_2/dff_asynch_res.png)
+	
+2. Asynchronous set D-Flip flop
+![](/DAY_2/dff_asynch_set.png)
+	
+3. Synchronous reset D-Flip flop
+![](/DAY_2/dff_synch_res.png)
+	
+4. Asynchronous & Synchronous reset D-Flip flop
+![](/DAY_2/dff_asynch_sync_res.png)
+	
+**NOTE**: There can be the case when we have asynchronous and synchronous reset(as in last flop coding style shown above) together, it will not cause race condition. But if the desing have both reset and set ,it may cause race condition.
 
 
 
