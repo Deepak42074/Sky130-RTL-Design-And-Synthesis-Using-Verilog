@@ -659,7 +659,7 @@ lets understand this caveat with exmaple "bad_case.v".
 From the RTL code, we can see that last case statement has condition ```sel= 2'b1? ```. This case is overlapping case ``` sel = 2'b10 ```. Thus this cse confuses the simulator causing the synthesis-simulation mismatch. This create overlapping case and different simulator shows different behaviour for such case. The tool will give unpredictable ouput for overlapping case statements.
 
 From the synthesized netlist, we can find out that no latch is inferred for overlapping case and the GLS shows correct output behaviour as expected.
-Thus overlapping case statements create synthesis-simulation mismatch and to avoid this , all the statements of case statement shoul be mutually exclusive which is a correct way of coding.
+Thus overlapping case statements create synthesis-simulation mismatch and to avoid this , all the statements of case statement should be mutually exclusive which is a correct way of coding.
 
 ## 6.3 For loop and For generate constructs :
 ### 6.3.1 For loop :
@@ -671,7 +671,7 @@ lets understand this with example "mux_generate.v":
 ![](DAY_5/For_loop_1.png)
 ![](DAY_5/For_loop_2.png)
 
-we can see that the ouput waveform for RTL code functional simulation and synthesized netlist GLS are same. This is implemetation of small size mux, but we can make large size mux simply using same code except that we only need to change the input bus size and number fo times loop runs.	If we use 'case' statements for same size mux, it will not be difficult but when we increase the size of MUX, the implementation using 'case' statements will become cumbersome which can be built using "foe-loop " easily.
+we can see that the ouput waveform for RTL code functional simulation and synthesized netlist GLS are same. This is implemetation of small size mux, but we can make large size mux simply using same code except that we only need to change the input bus size and number fo times loop runs.	If we use 'case' statements for same size mux, it will not be difficult but when we increase the size of MUX, the implementation using 'case' statements will become cumbersome which can be built using "for-loop " easily.
 		  		  
 		  
 ### 6.3.2 For generate :
