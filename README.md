@@ -51,6 +51,7 @@ This repository shows the contents  and labs covered in the [RTL Desing using Ve
       * [Missing Sensitivity list](#Missing-Sensitivity-list)	
       * [Blocking and Non-blocking assignments in verilog](#Blocking-and-Non---blocking-assignments-in-verilog)
 - [Day5 - If, case, for loop and for generate](#Day5---If-,-case-,-for-loop-and-for-generate)
+- 
 
 - [Acknowledgements](#acknowledgements)
 - [References](#references)
@@ -645,6 +646,9 @@ Thus overlapping case statements create synthesis-simulation mismatch and to avo
 lets understand this with example "mux_generate.v": 
 ![](DAY_5/For_loop_1.png)
 ![](DAY_5/For_loop_2.png)
+
+we can see that the ouput waveform for RTL code functional simulation and synthesized netlist GLS are same. This is implemetation of small size mux, but we can make large size mux simply using same code except that we only need to change the input bus size and number fo times loop runs.	If we use 'case' statements for same size mux, it will not be difficult but when we increase the size of MUX, the implementation using 'case' statements will become cumbersome which can be built using "foe-loop " easily.
+		  		  
 		  
 ### 6.3.2 For generate :
 * It is used outside the 'always' block.
@@ -655,6 +659,11 @@ lets understand this with example "rca.v":
 ![](DAY_5/Generate_1.png)
 ![](DAY_5/Generate_2.png)
 ![](DAY_5/Generate_3.png)		  
+
+The above images shows that the ouput waveform for RTL code functional simulation and synthesized netlist GLS show similar behaviour. Here the code has implemented 8-bit ripple carry adder using "for-generate" statement. Using "for-generate" helps us to replicate the hardware easily when we need same hardware to repeat large number of times, else we have to instantiate each hardware individually which will be cumbersome unlike number of times the hardware replication is samll.
+		  
+		  
+		  
 		  
 # Acknowledgements
 
@@ -664,4 +673,7 @@ lets understand this with example "rca.v":
 # References 
 * http://bygone.clairexen.net/yosys/documentation.html
 * https://skywater-pdk.readthedocs.io/en/main/contents/libraries/foundry-provided.html#sky130-fd-sc-hd-high-density-standard-cell-library
-
+* https://www.chipverify.com/verilog/verilog-case-statement	
+* https://wavedrom.com/tutorial.html
+* https://iverilog.fandom.com/wiki/GTKWave
+* http://iverilog.icarus.com/		  
